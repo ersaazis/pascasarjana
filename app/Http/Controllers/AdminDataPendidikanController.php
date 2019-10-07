@@ -34,7 +34,7 @@
 			$this->col[] = ["label"=>"Perguruan Tinggi","name"=>"nm_sp_formal"];
 			$this->col[] = ["label"=>"Jenjang","name"=>"namajenjang"];
 			$this->col[] = ["label"=>"Gelar Akademik","name"=>"singkat_gelar"];
-			if(CRUDbooster::myPrivilegeName() == "DOSEN"){
+			if(CRUDbooster::myPrivilegeName() != "DOSEN"){
 				$this->col[] = ["label"=>"Dosen","name"=>"user_id","join"=>"cms_users,name"];
 			}
 			# END COLUMNS DO NOT REMOVE THIS LINE
@@ -45,8 +45,8 @@
 			$this->form[] = ['label'=>'Perguruan Tinggi','name'=>'nm_sp_formal','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Jenjang','name'=>'namajenjang','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Gelar','name'=>'singkat_gelar','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			if(CRUDbooster::myPrivilegeName() == "DOSEN"){
-				$this->form[] = ['label'=>'Dosen','name'=>'user_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name'];
+			if(CRUDbooster::myPrivilegeName() != "DOSEN"){
+				$this->form[] = ['label'=>'Dosen','name'=>'user_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name',"datatable_where"=>"id = 2"];
 			}
 			# END FORM DO NOT REMOVE THIS LINE
 

@@ -30,25 +30,25 @@
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
-			$this->col[] = ["label"=>"ID Semester","name"=>"id_smt","join"=>"smt,id"];
+			$this->col[] = ["label"=>"ID Semester","name"=>"id_smt"];
 			$this->col[] = ["label"=>"Nama Kelas","name"=>"nm_kls"];
 			$this->col[] = ["label"=>"Kode Matakuliah","name"=>"kode_mk"];
 			$this->col[] = ["label"=>"Nama Matakuliah","name"=>"nm_mk"];
 			$this->col[] = ["label"=>"Perguruan Tinggi","name"=>"namapt"];
-			if(CRUDbooster::myPrivilegeName() == "DOSEN"){
+			if(CRUDbooster::myPrivilegeName() != "DOSEN"){
 				$this->col[] = ["label"=>"Dosen","name"=>"user_id","join"=>"cms_users,name"];
 			}
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'ID Semester','name'=>'id_smt','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'smt,id'];
+			$this->form[] = ['label'=>'ID Semester','name'=>'id_smt','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Nama Kelas','name'=>'nm_kls','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Kode Matakuliah','name'=>'kode_mk','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Nama Matakuliah','name'=>'nm_mk','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Perguruan Tinggi','name'=>'namapt','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
-			if(CRUDbooster::myPrivilegeName() == "DOSEN"){
-				$this->form[] = ['label'=>'Dosen','name'=>'user_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name'];
+			if(CRUDbooster::myPrivilegeName() != "DOSEN"){
+				$this->form[] = ['label'=>'Dosen','name'=>'user_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name',"datatable_where"=>"id = 2"];
 			}
 			# END FORM DO NOT REMOVE THIS LINE
 

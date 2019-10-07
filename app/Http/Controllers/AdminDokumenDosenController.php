@@ -33,7 +33,7 @@
 			$this->col[] = ["label"=>"Judul","name"=>"judul"];
 			$this->col[] = ["label"=>"File","name"=>"file"];
 			$this->col[] = ["label"=>"Kategori","name"=>"kategori_id","join"=>"kategori_dokumen,nama"];
-			if(CRUDbooster::myPrivilegeName() == "DOSEN"){
+			if(CRUDbooster::myPrivilegeName() != "DOSEN"){
 				$this->col[] = ["label"=>"Dosen","name"=>"user_id","join"=>"cms_users,name"];
 			}
 			# END COLUMNS DO NOT REMOVE THIS LINE
@@ -43,8 +43,8 @@
 			$this->form[] = ['label'=>'Judul','name'=>'judul','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
 			$this->form[] = ['label'=>'File','name'=>'file','type'=>'upload','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Kategori','name'=>'kategori_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'kategori_dokumen,nama'];
-			if(CRUDbooster::myPrivilegeName() == "DOSEN"){
-				$this->form[] = ['label'=>'Dosen','name'=>'user_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name'];
+			if(CRUDbooster::myPrivilegeName() != "DOSEN"){
+				$this->form[] = ['label'=>'Dosen','name'=>'user_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name',"datatable_where"=>"id = 2"];
 			}
 			# END FORM DO NOT REMOVE THIS LINE
 

@@ -35,7 +35,7 @@
 			$this->col[] = ["label"=>"Publis","name"=>"publis"];
 			$this->col[] = ["label"=>"Tahun","name"=>"tahun"];
 			$this->col[] = ["label"=>"Url","name"=>"url"];
-			if(CRUDbooster::myPrivilegeName() == "DOSEN"){
+			if(CRUDbooster::myPrivilegeName() != "DOSEN"){
 				$this->col[] = ["label"=>"Dosen","name"=>"user_id","join"=>"cms_users,name"];
 			}
 			# END COLUMNS DO NOT REMOVE THIS LINE
@@ -47,8 +47,8 @@
 			$this->form[] = ['label'=>'Publis','name'=>'publis','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Tahun','name'=>'tahun','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Url','name'=>'url','type'=>'text','validation'=>'required|url','width'=>'col-sm-10','placeholder'=>'Please enter a valid URL'];
-			if(CRUDbooster::myPrivilegeName() == "DOSEN"){
-				$this->form[] = ['label'=>'Dosen','name'=>'user_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name'];
+			if(CRUDbooster::myPrivilegeName() != "DOSEN"){
+				$this->form[] = ['label'=>'Dosen','name'=>'user_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name',"datatable_where"=>"id = 2"];
 			}
 			# END FORM DO NOT REMOVE THIS LINE
 
