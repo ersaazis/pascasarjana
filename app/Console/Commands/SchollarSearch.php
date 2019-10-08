@@ -3,6 +3,8 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use DB;
+use Storage;
 
 class SchollarSearch extends Command
 {
@@ -11,7 +13,7 @@ class SchollarSearch extends Command
      *
      * @var string
      */
-    protected $signature = 'scholar:search {name}';
+    protected $signature = 'scholar:search {id}';
 
     /**
      * The console command description.
@@ -37,7 +39,15 @@ class SchollarSearch extends Command
      */
     public function handle()
     {
-        $name = $this->argument('name');
+        $id = $this->argument('id');
+        $query=DB::table('cms_users')->where('id',$id)->where('id_cms_privileges',2);
+        $data=$query->first();
+        if(empty($data)){
+            $this->error('User Tidak Ditemukan !');
+            exit();
+        }
+
+        $name=$data->name;
         $client = new \GuzzleHttp\Client();
         $url = "https://scholar.google.co.id/citations?view_op=search_authors&hl=id&mauthors=".$name;
         $response = $client->request('GET', $url);
@@ -55,24 +65,28 @@ class SchollarSearch extends Command
                 $content = $body->getContents();
                 preg_match_all("/data-href=\"(.*)\" class=\"gsc_a_at\">(.*)<\/a><div class=\"gs_gray\">(.*)<\/div><div class=\"gs_gray\">(.*)<\/div>.*<span class=\"gsc_a_h gsc_a_hc gs_ibl\">(.*)<\/span>/U", $content, $karyaIlmiah);
                 // print_r($karyaIlmiah);
+                $this->info('Data Ditemukan !');
                 $i=0;
-                $hasil['hasil']=true;
-                $hasil['foto']="https://scholar.google.com/citations?view_op=medium_photo&user=".$cariId[1];
+                $url="https://scholar.google.com/citations?view_op=medium_photo&user=".$cariId[1];
+                $contents = file_get_contents($url);
+                Storage::disk('public')->put($cariId[1].".jpg", $contents);
+                $query->update(['photo'=>'storage/'.$cariId[1].".jpg"]);
                 while ($i < count($karyaIlmiah[1])) {
-                    $hasil['data'][$i]['url']=str_replace("&amp;", "&","https://scholar.google.co.id".$karyaIlmiah[1][$i]);
-                    $hasil['data'][$i]['judul']=$karyaIlmiah[2][$i];
-                    $hasil['data'][$i]['penulis']=$karyaIlmiah[3][$i];
-                    $hasil['data'][$i]['publis']=str_replace(array('<span class="gs_oph">','</span>'), "", $karyaIlmiah[4][$i]);
-                    $hasil['data'][$i]['tahun']=$karyaIlmiah[5][$i];
+                    DB::table('data_penelitian')->insert([
+                        'url'=>str_replace("&amp;", "&","https://scholar.google.co.id".$karyaIlmiah[1][$i]),
+                        'judul'=>htmlspecialchars($karyaIlmiah[2][$i]),
+                        'penulis'=>htmlspecialchars($karyaIlmiah[3][$i]),
+                        'publis'=>htmlspecialchars(str_replace(array('<span class="gs_oph">','</span>'), "", $karyaIlmiah[4][$i])),
+                        'tahun'=>$karyaIlmiah[5][$i],
+                        "user_id"=>$id,
+                    ]);
                     $i++;
                 }
             }
         }
         else {
-            $hasil['hasil']=false;
-            $hasil['foto']=null;
-            $hasil['data']=array();
+            $this->error('Data Tidak Ditemukan !');
         }
-        print_r($hasil);
+        $query->update(['proses_update'=>0]);
     }
 }

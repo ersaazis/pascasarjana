@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use CRUDBooster;
+use Artisan;
 
 class TambahDosen extends Controller
 {
@@ -25,9 +26,10 @@ class TambahDosen extends Controller
     		'id_cms_privileges' => 2,
     		'password' => $pass,
     	];
-    	DB::table('cms_users')->insert($save);
+    	$id=DB::table('cms_users')->insertGetId($save);
     	// ADD queue console
-
+		Artisan::queue('scholar:search', ['id' => $id])->onConnection('database')->onQueue('commands');
+		Artisan::queue('dikti:search', ['id' => $id])->onConnection('database')->onQueue('commands');
     	// end queue console 
     	if($data['submit'] == "Simpan"){
 	    	return CRUDBooster::redirect(config('crudbooster.ADMIN_PATH').'/users','Berhasil Disimpan','success');

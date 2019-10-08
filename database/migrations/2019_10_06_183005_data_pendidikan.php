@@ -14,11 +14,11 @@ class DataPendidikan extends Migration
     public function up()
     {
         Schema::create('data_pendidikan', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('thn_lulus');
-            $table->string('nm_sp_formal');
-            $table->string('namajenjang');
-            $table->string('singkat_gelar');
+            $table->increments('id')->nullable();
+            $table->integer('thn_lulus')->nullable();
+            $table->string('nm_sp_formal')->nullable();
+            $table->string('namajenjang')->nullable();
+            $table->string('singkat_gelar')->nullable();
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('cms_users')->onDelete('cascade');
             $table->timestamps();

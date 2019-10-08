@@ -14,12 +14,12 @@ class DataPenelitian extends Migration
     public function up()
     {
         Schema::create('data_penelitian', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('judul');
-            $table->string('penulis');
-            $table->string('publis');
-            $table->string('tahun');
-            $table->string('url');
+            $table->increments('id')->nullable();
+            $table->text('judul')->nullable();
+            $table->string('penulis')->nullable();
+            $table->string('publis')->nullable();
+            $table->string('tahun')->nullable();
+            $table->string('url')->nullable();
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('cms_users')->onDelete('cascade');
             $table->timestamps();

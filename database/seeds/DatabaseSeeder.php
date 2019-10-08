@@ -12,6 +12,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
+        $this->call(KategoriDokumenTableSeeder::class);
         $this->call(CmsApicustomTableSeeder::class);
         $this->call(CmsApikeyTableSeeder::class);
         $this->call(CmsDashboardTableSeeder::class);
@@ -28,11 +29,5 @@ class DatabaseSeeder extends Seeder
         $this->call(CmsStatisticComponentsTableSeeder::class);
         $this->call(CmsStatisticsTableSeeder::class);
         $this->call(CmsUsersTableSeeder::class);
-        $this->call(DataMengajarTableSeeder::class);
-        $this->call(DataPendidikanTableSeeder::class);
-        $this->call(DataPenelitianTableSeeder::class);
-        $this->call(DokumenDosenTableSeeder::class);
-        $this->call(KategoriDokumenTableSeeder::class);
-        $this->call(MigrationsTableSeeder::class);
     }
 }

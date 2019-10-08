@@ -61,7 +61,7 @@
 				<div class="form-group">
 				<label class="control-label col-sm-2"></label>
 				<div class="col-sm-10">
-				<a href="http://localhost:8000/admin/users?" class="btn btn-default"><i class="fa fa-chevron-circle-left"></i> Kembali</a>
+				<a href="/{{config('crudbooster.ADMIN_PATH')}}/users" class="btn btn-default"><i class="fa fa-chevron-circle-left"></i> Kembali</a>
 				<input type="submit" name="submit" value="Simpan &amp; Tambah Lagi" class="btn btn-success">
 				<input type="submit" name="submit" value="Simpan" class="btn btn-success">
 				</div>

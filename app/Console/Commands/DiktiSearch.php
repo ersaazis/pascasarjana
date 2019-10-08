@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use DB;
 
 class DiktiSearch extends Command
 {
@@ -11,7 +12,7 @@ class DiktiSearch extends Command
      *
      * @var string
      */
-    protected $signature = 'dikti:search {name}';
+    protected $signature = 'dikti:search {id}';
 
     /**
      * The console command description.
@@ -37,8 +38,15 @@ class DiktiSearch extends Command
      */
     public function handle()
     {
-        $name = $this->argument('name');
+        $id = $this->argument('id');
+        $query=DB::table('cms_users')->where('id',$id)->where('id_cms_privileges',2);
+        $data=$query->first();
+        if(empty($data)){
+            $this->error('User Tidak Ditemukan !');
+            exit();
+        }
 
+        $name=$data->name;
         $client = new \GuzzleHttp\Client();
         $url = "https://api-frontend.ristekdikti.go.id/search_dosen";
         $myBody['nama'] = $name;
@@ -50,21 +58,46 @@ class DiktiSearch extends Command
         ]);
         $body = $response->getBody();
         $content = json_decode($body->getContents(), true)['dosen'];
-        $hasil=array();
         if(count($content) > 0){
-            $hasil['hasil']=true;
             $url = "https://api-frontend.ristekdikti.go.id/detail_dosen/".$content[0]['id'];
             $response = $client->request('GET', $url);
             $body = $response->getBody();
             $content = json_decode($body->getContents(), true);
             unset($content['dataumum']['foto']);
-            $hasil['data']=$content;
+            $this->info('Data Ditemukan !');
+            foreach ($content['datamengajar'] as $value) {
+                DB::table('data_mengajar')->insert([
+                    "id_smt"=>$value['id_smt'],
+                    "nm_kls"=>$value['nm_kls'],
+                    "kode_mk"=>$value['kode_mk'],
+                    "nm_mk"=>$value['nm_mk'],
+                    "namapt"=>$value['namapt'],
+                    "user_id"=>$id
+                ]);
+            }
+            foreach ($content['datapendidikan'] as $value) {
+                DB::table('data_pendidikan')->insert([
+                    "thn_lulus"=>$value['thn_lulus'],
+                    "nm_sp_formal"=>$value['nm_sp_formal'],
+                    "namajenjang"=>$value['namajenjang'],
+                    "singkat_gelar"=>$value['singkat_gelar'],
+                    "user_id"=>$id,
+                ]);
+            }
+            $query->update([
+                "jenis_kelamin"=>($content['dataumum']['jk'] == "L")?"Laki-Laki":"Perempuan",
+                "tmpt_lahir"=>$content['dataumum']['tmpt_lahir'],
+                "namapt"=>$content['dataumum']['namapt'],
+                "namaprodi"=>$content['dataumum']['namaprodi'],
+                "statuskeaktifan"=>$content['dataumum']['statuskeaktifan'],
+                "pend_tinggi"=>$content['dataumum']['pend_tinggi'],
+                "fungsional"=>$content['dataumum']['fungsional'],
+                "ikatankerja"=>$content['dataumum']['ikatankerja']
+            ]);
         }
         else{
-            $hasil['hasil']=false;
-            $hasil['data']=array();
+            $this->error('Data Tidak Ditemukan !');
         }
 
-        print_r($hasil);
     }
 }

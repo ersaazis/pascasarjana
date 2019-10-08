@@ -14,12 +14,12 @@ class DataMengajar extends Migration
     public function up()
     {
         Schema::create('data_mengajar', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('id_smt');
-            $table->integer('nm_kls');
-            $table->integer('kode_mk');
-            $table->integer('nm_mk');
-            $table->integer('namapt');
+            $table->increments('id')->nullable();
+            $table->integer('id_smt')->nullable();
+            $table->string('nm_kls')->nullable();
+            $table->string('kode_mk')->nullable();
+            $table->string('nm_mk')->nullable();
+            $table->string('namapt')->nullable();
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('cms_users')->onDelete('cascade');
             $table->timestamps();
