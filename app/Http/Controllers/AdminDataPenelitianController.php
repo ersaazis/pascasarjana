@@ -35,6 +35,8 @@
 			$this->col[] = ["label"=>"Publis","name"=>"publis"];
 			$this->col[] = ["label"=>"Tahun","name"=>"tahun"];
 			$this->col[] = ["label"=>"Url","name"=>"url"];
+			$this->col[] = ["label"=>"Titasi","name"=>"titasi"];
+			$this->col[] = ["label"=>"Url Titasi","name"=>"url_titasi"];
 			if(CRUDbooster::myPrivilegeName() != "DOSEN"){
 				$this->col[] = ["label"=>"Dosen","name"=>"user_id","join"=>"cms_users,name"];
 			}
@@ -46,7 +48,9 @@
 			$this->form[] = ['label'=>'Penulis','name'=>'penulis','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Publis','name'=>'publis','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Tahun','name'=>'tahun','type'=>'text','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Url','name'=>'url','type'=>'text','validation'=>'required|url','width'=>'col-sm-10','placeholder'=>'Please enter a valid URL'];
+			$this->form[] = ['label'=>'Url','name'=>'url','type'=>'text','validation'=>'required|url','width'=>'col-sm-10','placeholder'=>'Masukan URL yang valid'];
+			$this->form[] = ['label'=>'Jumlah Titasi','name'=>'titasi','type'=>'number','validation'=>'required','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Url Titasi','name'=>'url_titasi','type'=>'text','validation'=>'required|url','width'=>'col-sm-10','placeholder'=>'Masukan URL yang valid'];
 			if(CRUDbooster::myPrivilegeName() != "DOSEN"){
 				$this->form[] = ['label'=>'Dosen','name'=>'user_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name',"datatable_where"=>"id = 2"];
 			}
