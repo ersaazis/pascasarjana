@@ -371,11 +371,11 @@ class CmsPrivilegesRolesTableSeeder extends Seeder
             27 => 
             array (
                 'id' => 34,
-                'is_visible' => 0,
+                'is_visible' => 1,
                 'is_create' => 0,
-                'is_read' => 0,
+                'is_read' => 1,
                 'is_edit' => 1,
-                'is_delete' => 0,
+                'is_delete' => 1,
                 'id_cms_privileges' => 2,
                 'id_cms_moduls' => 4,
                 'created_at' => NULL,

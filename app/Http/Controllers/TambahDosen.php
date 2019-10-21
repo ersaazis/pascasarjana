@@ -29,7 +29,7 @@ class TambahDosen extends Controller
     	$id=DB::table('cms_users')->insertGetId($save);
     	// ADD queue console
 		Artisan::queue('scholar:search', ['id' => $id])->onConnection('database')->onQueue('commands');
-		Artisan::queue('dikti:search', ['id' => $id])->onConnection('database')->onQueue('commands');
+		Artisan::queue('diktiold:search', ['id' => $id])->onConnection('database')->onQueue('commands');
     	// end queue console 
     	if($data['submit'] == "Simpan"){
 	    	return CRUDBooster::redirect(config('crudbooster.ADMIN_PATH').'/users','Berhasil Disimpan','success');

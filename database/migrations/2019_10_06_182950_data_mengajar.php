@@ -15,7 +15,7 @@ class DataMengajar extends Migration
     {
         Schema::create('data_mengajar', function (Blueprint $table) {
             $table->increments('id')->nullable();
-            $table->integer('id_smt')->nullable();
+            $table->string('id_smt')->nullable();
             $table->string('nm_kls')->nullable();
             $table->string('kode_mk')->nullable();
             $table->string('nm_mk')->nullable();
