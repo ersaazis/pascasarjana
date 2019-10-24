@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use crocodicstudio\crudbooster\helpers\CRUDBooster;
 use Illuminate\Console\Command;
 use DB;
 
@@ -12,7 +13,7 @@ class DiktiSearchOld extends Command
      *
      * @var string
      */
-    protected $signature = 'diktiold:search {id}';
+    protected $signature = 'diktiold:search {id} {id_user=0}';
 
     /**
      * The console command description.
@@ -82,11 +83,16 @@ class DiktiSearchOld extends Command
     }
     public function handle()
     {
+        $config=array();
         $id = $this->argument('id');
+        $id_user = $this->argument('id_user');
         $query=DB::table('cms_users')->where('id',$id)->where('id_cms_privileges',2);
         $data=$query->first();
         if(empty($data)){
             $this->error('User Tidak Ditemukan !');
+            $config['content'] = "Tidak dapat menemukan data user";
+            $config['to'] = CRUDBooster::adminPath('users/detail/'.$id);
+            $config['id_cms_users'] = [$id_user];
         }
         else {
             $name=$data->name;
@@ -138,7 +144,18 @@ class DiktiSearchOld extends Command
                     "pend_tinggi"=>$dataDosen['profil'][5],
                     "fungsional"=>$dataDosen['profil'][4],
                     "ikatankerja"=>$dataDosen['profil'][6]
-                ]);            }
+                ]);
+                $config['content'] = "(V) Forlap Ristekdikti untuk ".$dataDosen['profil'][0];
+                $config['to'] = CRUDBooster::adminPath('users/detail/'.$id);
+                $config['id_cms_users'] = [$id_user];
+            }
+            else {
+                $config['content'] = "(X) Forlap Ristekdikti untuk".$dataDosen['profil'][0];
+                $config['to'] = CRUDBooster::adminPath('users/detail/'.$id);
+                $config['id_cms_users'] = [$id_user];
+            }
         }
+        if($id_user != 0)
+            CRUDBooster::sendNotification($config);
     }
 }

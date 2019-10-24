@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use crocodicstudio\crudbooster\helpers\CRUDBooster;
 use Illuminate\Console\Command;
 use DB;
 use Storage;
@@ -13,7 +14,7 @@ class SchollarSearch extends Command
      *
      * @var string
      */
-    protected $signature = 'scholar:search {id}';
+    protected $signature = 'scholar:search {id} {id_user=0}';
 
     /**
      * The console command description.
@@ -40,10 +41,14 @@ class SchollarSearch extends Command
     public function handle()
     {
         $id = $this->argument('id');
+        $id_user = $this->argument('id_user');
         $query=DB::table('cms_users')->where('id',$id)->where('id_cms_privileges',2);
         $data=$query->first();
         if(empty($data)){
             $this->error('User Tidak Ditemukan !');
+            $config['content'] = "Tidak dapat menemukan data user";
+            $config['to'] = CRUDBooster::adminPath('users/detail/'.$id);
+            $config['id_cms_users'] = [$id_user];
         }
         else {
             $name=$data->name;
@@ -84,12 +89,20 @@ class SchollarSearch extends Command
                         ]);
                         $i++;
                     }
+                    $config['content'] = "(V) Schollar Google untuk ".$name;
+                    $config['to'] = CRUDBooster::adminPath('users/detail/'.$id);
+                    $config['id_cms_users'] = [$id_user];
                 }
             }
             else {
+                $config['content'] = "(X) Schollar Google untuk".$name;
+                $config['to'] = CRUDBooster::adminPath('users/detail/'.$id);
+                $config['id_cms_users'] = [$id_user];
                 $this->error('Data Tidak Ditemukan !');
             }
             $query->update(['proses_update'=>0]);
+            if($id_user != 0)
+                CRUDBooster::sendNotification($config);
         }
     }
 }

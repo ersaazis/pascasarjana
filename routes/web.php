@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ProfilDosen@index');
+Route::get('/profil/{id}/{nama}', 'ProfilDosen@profil');
+Route::get('/cari', 'ProfilDosen@cari');
+
 Route::middleware(['web','\crocodicstudio\crudbooster\middlewares\CBBackend'])->prefix(config('crudbooster.ADMIN_PATH'))->group(function () {
 	Route::get('/users/dosen', 'TambahDosen@add');
 	Route::post('/users/dosen', 'TambahDosen@save')->name('addDosen');

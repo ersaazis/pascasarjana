@@ -35,7 +35,7 @@
 			$this->col[] = ["label"=>"Publis","name"=>"publis"];
 			$this->col[] = ["label"=>"Tahun","name"=>"tahun"];
 			$this->col[] = ["label"=>"Url","name"=>"url"];
-			$this->col[] = ["label"=>"Titasi","name"=>"titasi"];
+			$this->col[] = ["label"=>"Sitasi","name"=>"titasi"];
 			$this->col[] = ["label"=>"Url Titasi","name"=>"url_titasi"];
 			if(CRUDbooster::myPrivilegeName() != "DOSEN"){
 				$this->col[] = ["label"=>"Dosen","name"=>"user_id","join"=>"cms_users,name"];
