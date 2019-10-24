@@ -51,13 +51,17 @@ class SchollarSearch extends Command
             $config['id_cms_users'] = [$id_user];
         }
         else {
+            $client = new \GuzzleHttp\Client();
+
             $name=$data->name;
             $auto_update=$data->auto_update;
+            $url_schollar=$data->url_schollar;
+            if($url_schollar)
+                goto scrapdata;
 
             if($auto_update == 0 and $id_user == 0)
                 goto skip;
 
-            $client = new \GuzzleHttp\Client();
             $url = "https://scholar.google.co.id/citations?view_op=search_authors&hl=id&mauthors=".$name;
             $response = $client->request('GET', $url);
             $body = $response->getBody();
@@ -68,7 +72,8 @@ class SchollarSearch extends Command
             if($cekUser){
                 $cekId=preg_match("/;user=(.*)\"/U",$user[0][0],$cariId);
                 if($cekId){
-                    $url = "https://scholar.google.co.id/citations?hl=id&user=".$cariId[1]."&cstart=0&pagesize=999999999";
+                    scrapdata:
+                    $url = empty($url_schollar)?"https://scholar.google.co.id/citations?hl=id&user=".$cariId[1]."&cstart=0&pagesize=999999999":$url_schollar;
                     $response = $client->request('GET', $url);
                     $body = $response->getBody();
                     $content = $body->getContents();
@@ -77,10 +82,15 @@ class SchollarSearch extends Command
                     // print_r($karyaIlmiah);
                     $this->info('Data Ditemukan !');
                     $i=0;
-                    $url="https://scholar.google.com/citations?view_op=medium_photo&user=".$cariId[1];
-                    $contents = file_get_contents($url);
-                    Storage::disk('public')->put($cariId[1].".jpg", $contents);
-                    $query->update(['photo'=>'storage/'.$cariId[1].".jpg"]);
+                    if($id_user != 0){
+                        $urlFoto="https://scholar.google.com/citations?view_op=medium_photo&user=".$cariId[1];
+                        $contents = file_get_contents($urlFoto);
+                        Storage::disk('public')->put($cariId[1].".jpg", $contents);
+                        $query->update([
+                            'photo'=>'storage/'.$cariId[1].".jpg",
+                            'url_schollar'=>$url
+                        ]);
+                    }
                     while ($i < count($karyaIlmiah[1])) {
                         $signature=md5(json_encode([
                             $karyaIlmiah[1][$i],

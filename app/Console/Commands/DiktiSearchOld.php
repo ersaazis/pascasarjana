@@ -97,6 +97,10 @@ class DiktiSearchOld extends Command
         else {
             $name=$data->name;
             $auto_update=$data->auto_update;
+            $url=$data->url_dikti;
+            if($url){
+                goto scrapdata;
+            }
 
             if($auto_update == 0 and $id_user == 0)
                 goto skip;
@@ -118,6 +122,8 @@ class DiktiSearchOld extends Command
             $cekUser=preg_match_all("/<a href=\"https:\/\/forlap.ristekdikti.go.id\/dosen\/detail\/(.*)\">(.*)<\/a>/U", $content, $user);
             if($cekUser){
                 $url="https://forlap.ristekdikti.go.id/dosen/detail/".$user[1][0];
+                $query->update(["url_dikti"=>$url]);
+                scrapdata:
                 $dataDosen=$this->getDosen($url,$id);
                 // print_r($dataDosen);
                 foreach ($dataDosen['riwayat_mengajar'] as $value) {
@@ -163,7 +169,7 @@ class DiktiSearchOld extends Command
                         "statuskeaktifan"=>$dataDosen['profil'][7],
                         "pend_tinggi"=>$dataDosen['profil'][5],
                         "fungsional"=>$dataDosen['profil'][4],
-                        "ikatankerja"=>$dataDosen['profil'][6]
+                        "ikatankerja"=>$dataDosen['profil'][6],
                     ]);
                 $config['content'] = "(V) Forlap Ristekdikti untuk ".$dataDosen['profil'][0];
                 $config['to'] = CRUDBooster::adminPath('users/detail/'.$id);
