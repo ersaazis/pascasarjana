@@ -52,6 +52,11 @@ class SchollarSearch extends Command
         }
         else {
             $name=$data->name;
+            $auto_update=$data->auto_update;
+
+            if($auto_update == 0 and $id_user == 0)
+                goto skip;
+
             $client = new \GuzzleHttp\Client();
             $url = "https://scholar.google.co.id/citations?view_op=search_authors&hl=id&mauthors=".$name;
             $response = $client->request('GET', $url);
@@ -77,6 +82,19 @@ class SchollarSearch extends Command
                     Storage::disk('public')->put($cariId[1].".jpg", $contents);
                     $query->update(['photo'=>'storage/'.$cariId[1].".jpg"]);
                     while ($i < count($karyaIlmiah[1])) {
+                        $signature=md5(json_encode([
+                            $karyaIlmiah[1][$i],
+                            $karyaIlmiah[2][$i],$karyaIlmiah[3][$i],
+                            $karyaIlmiah[4][$i],$karyaIlmiah[5][$i],
+                            $karyaIlmiah[6][$i],$karyaIlmiah[7][$i],
+                        ]));
+                        if($id_user == 0){
+                            $check=DB::table('data_penelitian')->where('signature',$signature)->count();
+                            if($check > 0){
+                                $i++;
+                                continue;
+                            }
+                        }
                         DB::table('data_penelitian')->insert([
                             'url'=>str_replace("&amp;", "&","https://scholar.google.co.id".$karyaIlmiah[1][$i]),
                             'judul'=>htmlspecialchars($karyaIlmiah[2][$i]),
@@ -85,6 +103,7 @@ class SchollarSearch extends Command
                             'url_titasi'=>$karyaIlmiah[5][$i],
                             'titasi'=>(int) $karyaIlmiah[6][$i],
                             'tahun'=>$karyaIlmiah[7][$i],
+                            "signature"=>$signature,
                             "user_id"=>$id,
                         ]);
                         $i++;
@@ -104,5 +123,6 @@ class SchollarSearch extends Command
             if($id_user != 0)
                 CRUDBooster::sendNotification($config);
         }
+        skip:
     }
 }

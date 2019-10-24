@@ -8,8 +8,12 @@
 7. php artisan migrate --seed
 
 ## Cara Menjalankan
-1. php artisan serve // untuk menjalankan server (127.0.0.1)
-2. php artisan queue:work database --queue=commands // untuk menjalankan proses dibackgroud
+1. php artisan serve
+2. php artisan queue:work database --queue=commands
+3. php artisan queue:work database --queue=autoupdate
+
+## Auto Update
+Tambahkan command "php artisan autoupdate" di cronjob
 
 ## Akun
 username : ersaazis24m@gmail.com

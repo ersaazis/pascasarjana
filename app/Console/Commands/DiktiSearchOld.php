@@ -96,6 +96,11 @@ class DiktiSearchOld extends Command
         }
         else {
             $name=$data->name;
+            $auto_update=$data->auto_update;
+
+            if($auto_update == 0 and $id_user == 0)
+                goto skip;
+
             $client = new \GuzzleHttp\Client(['cookies' => true]);
             $url = "https://forlap.ristekdikti.go.id/dosen/search";
             $response = $client->request('POST', $url, [
@@ -116,35 +121,50 @@ class DiktiSearchOld extends Command
                 $dataDosen=$this->getDosen($url,$id);
                 // print_r($dataDosen);
                 foreach ($dataDosen['riwayat_mengajar'] as $value) {
+                    $signature=md5(json_encode($value));
+                    if($id_user == 0){
+                        $check=DB::table('data_mengajar')->where('signature',$signature)->count();
+                        if($check > 0)
+                            continue;
+                    }
                     DB::table('data_mengajar')->insert([
                         "id_smt"=>$value['semester'],
                         "nm_kls"=>$value['kd_kelas'],
                         "kode_mk"=>$value['kd_matkul'],
                         "nm_mk"=>$value['nm_matkul'],
                         "namapt"=>$value['perguruan_tinggi'],
+                        "signature"=>$signature,
                         "user_id"=>$id
                     ]);
                 }
                 foreach ($dataDosen['riwayat_pendidikan'] as $value) {
+                    $signature=md5(json_encode($value));
+                    if($id_user == 0){
+                        $check=DB::table('data_pendidikan')->where('signature',$signature)->count();
+                        if($check > 0)
+                            continue;
+                    }
                     DB::table('data_pendidikan')->insert([
                         "thn_lulus"=>$value['tgl_ijazah'],
                         "nm_sp_formal"=>$value['perguruan_tinggi'],
                         "namajenjang"=>$value['jenjang'],
                         "singkat_gelar"=>$value['gelar'],
+                        "signature"=>$signature,
                         "user_id"=>$id,
                     ]);
                 }
-                $query->update([
-                    "name"=>$dataDosen['profil'][0],
-                    "jenis_kelamin"=>$dataDosen['profil'][3],
-                    "tmpt_lahir"=>NULL,
-                    "namapt"=>$dataDosen['profil'][1],
-                    "namaprodi"=>$dataDosen['profil'][2],
-                    "statuskeaktifan"=>$dataDosen['profil'][7],
-                    "pend_tinggi"=>$dataDosen['profil'][5],
-                    "fungsional"=>$dataDosen['profil'][4],
-                    "ikatankerja"=>$dataDosen['profil'][6]
-                ]);
+                if($id_user != 0)
+                    $query->update([
+                        "name"=>$dataDosen['profil'][0],
+                        "jenis_kelamin"=>$dataDosen['profil'][3],
+                        "tmpt_lahir"=>NULL,
+                        "namapt"=>$dataDosen['profil'][1],
+                        "namaprodi"=>$dataDosen['profil'][2],
+                        "statuskeaktifan"=>$dataDosen['profil'][7],
+                        "pend_tinggi"=>$dataDosen['profil'][5],
+                        "fungsional"=>$dataDosen['profil'][4],
+                        "ikatankerja"=>$dataDosen['profil'][6]
+                    ]);
                 $config['content'] = "(V) Forlap Ristekdikti untuk ".$dataDosen['profil'][0];
                 $config['to'] = CRUDBooster::adminPath('users/detail/'.$id);
                 $config['id_cms_users'] = [$id_user];
@@ -157,5 +177,6 @@ class DiktiSearchOld extends Command
         }
         if($id_user != 0)
             CRUDBooster::sendNotification($config);
+        skip:
     }
 }

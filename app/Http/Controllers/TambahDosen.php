@@ -32,10 +32,10 @@ class TambahDosen extends Controller
 		Artisan::queue('diktiold:search', ['id' => $id,'id_user' => CRUDBooster::myId()])->onConnection('database')->onQueue('commands');
     	// end queue console 
     	if($data['submit'] == "Simpan"){
-	    	return CRUDBooster::redirect(config('crudbooster.ADMIN_PATH').'/users','Berhasil Disimpan','success');
+	    	return CRUDBooster::redirect(config('crudbooster.ADMIN_PATH').'/users','Berhasil Disimpan, Pengambilan data sedang dalam proses, anda akan mendapatkan notifikasi jika proses sudah selesai.','success');
     	}
     	else {
-	    	return CRUDBooster::redirect(route('addDosen'),'Berhasil Disimpan','success');
+	    	return CRUDBooster::redirect(route('addDosen'),'Berhasil Disimpan, Pengambilan data sedang dalam proses, anda akan mendapatkan notifikasi jika proses sudah selesai.','success');
     	}
     }
 }
