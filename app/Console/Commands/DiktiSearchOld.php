@@ -170,6 +170,7 @@ class DiktiSearchOld extends Command
                         "pend_tinggi"=>$dataDosen['profil'][5],
                         "fungsional"=>$dataDosen['profil'][4],
                         "ikatankerja"=>$dataDosen['profil'][6],
+                        "id_dikti"=>$user[1][0],
                     ]);
                 $config['content'] = "(V) Forlap Ristekdikti untuk ".$dataDosen['profil'][0];
                 $config['to'] = CRUDBooster::adminPath('users/detail/'.$id);

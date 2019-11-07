@@ -37,6 +37,10 @@ class AdminCmsUsersController extends \crocodicstudio\crudbooster\controllers\CB
 
 		# START FORM DO NOT REMOVE THIS LINE
 		$this->form = array(); 		
+		if(CRUDbooster::myPrivilegeName() == "DOSEN"){
+			$this->form[] = array("label"=>"NIP","name"=>"nip",'type'=>'text','required'=>true,'validation'=>'required');
+			$this->form[] = array("label"=>"NIDN","name"=>"nidn",'type'=>'text','required'=>true,'validation'=>'required');
+		}
 		$this->form[] = array("label"=>"Nama","name"=>"name",'required'=>true,'validation'=>'required|min:3');
 		$this->form[] = array("label"=>"Email","name"=>"email",'required'=>true,'type'=>'email','validation'=>'required|email|unique:cms_users,email,'.CRUDBooster::getCurrentId());
 		$this->form[] = array("label"=>"Photo","name"=>"photo","type"=>"upload","help"=>"Rekomendasi 200x200px",'required'=>true,'validation'=>'required|image|max:1000','resize_width'=>90,'resize_height'=>90);									
@@ -45,18 +49,24 @@ class AdminCmsUsersController extends \crocodicstudio\crudbooster\controllers\CB
 		$this->form[] = array("label"=>"Password","name"=>"password","type"=>"password","help"=>"Kosongkan jika tidak ingin diganti");
 		$this->form[] = array("label"=>"Konfirmasi Password","name"=>"password_confirmation","type"=>"password","help"=>"Kosongkan jika tidak ingin diganti");
 		if(CRUDbooster::myPrivilegeName() == "DOSEN"){
-			$this->form[] = array("label"=>"Jenis Kelamin","name"=>"jenis_kelamin",'required'=>true,'type'=>'select','validation'=>'required','dataenum'=>'Laki-Laki;Perempuan');
-			$this->form[] = array("label"=>"Tempat Lahir","name"=>"tmpt_lahir",'required'=>true,'type'=>'text','validation'=>'required');
-			$this->form[] = array("label"=>"Nama Perguruan Tinggi","name"=>"namapt",'required'=>true,'type'=>'text','validation'=>'required');
-			$this->form[] = array("label"=>"Nama Program Studi","name"=>"namaprodi",'required'=>true,'type'=>'text','validation'=>'required');
-			$this->form[] = array("label"=>"Status Keaktifan","name"=>"statuskeaktifan",'required'=>true,'type'=>'text','validation'=>'required');
-			$this->form[] = array("label"=>"Pendidikan","name"=>"pend_tinggi",'required'=>true,'type'=>'text','validation'=>'required');
-			$this->form[] = array("label"=>"Fungsional","name"=>"fungsional",'required'=>true,'type'=>'text','validation'=>'required');
-			$this->form[] = array("label"=>"Ikatan Kerja","name"=>"ikatankerja",'required'=>true,'type'=>'text','validation'=>'required');
+			$this->form[] = array("label"=>"Jenis Kelamin","name"=>"jenis_kelamin",'type'=>'select','dataenum'=>'Laki-Laki;Perempuan','required'=>true,'validation'=>'required');
+			$this->form[] = array("label"=>"Tempat Lahir","name"=>"tmpt_lahir",'type'=>'text','required'=>true,'validation'=>'required');
+			$this->form[] = array("label"=>"Tanggal Lahir","name"=>"tanggal_lahir",'type'=>'date','required'=>true,'validation'=>'required');
+			$this->form[] = array("label"=>"Nama Perguruan Tinggi","name"=>"namapt",'type'=>'text','required'=>true,'validation'=>'required');
+			$this->form[] = array("label"=>"Nama Program Studi","name"=>"namaprodi",'type'=>'text','required'=>true,'validation'=>'required');
+			$this->form[] = array("label"=>"Status Keaktifan","name"=>"statuskeaktifan",'type'=>'text');
+			$this->form[] = array("label"=>"Pendidikan","name"=>"pend_tinggi",'type'=>'text','required'=>true,'validation'=>'required');
+			$this->form[] = array("label"=>"Fungsional","name"=>"fungsional",'type'=>'text');
+			$this->form[] = array("label"=>"Ikatan Kerja","name"=>"ikatankerja",'type'=>'text');
+			$this->form[] = array("label"=>"Bidang Keahlian","name"=>"bidang_keahlian",'type'=>'text');
+			$this->form[] = array("label"=>"Alamat","name"=>"alamat",'type'=>'textarea');
 			$this->form[] = array("label"=>"Auto Update","name"=>"auto_update",'required'=>true,'type'=>'select','validation'=>'required','dataenum'=>'1;0',"help"=>"Auto update untuk Data Mengajar dan Data Penelitian (1=iya, 0=tidak)");
 		}
+		$this->form[] = array("label"=>"ID Dikti","name"=>"id_dikti",'type'=>'text',"placeholder"=>'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
+		$this->form[] = array("label"=>"ID Schollar","name"=>"id_schollar",'type'=>'text',"placeholder"=>'xxxxxxxxxxxx');
+		$this->form[] = array("label"=>"ID Scopus","name"=>"id_scopus",'type'=>'text',"placeholder"=>'xxxxxxxxxxx');
+		$this->form[] = array("label"=>"ID Orchid","name"=>"id_orchid",'type'=>'text',"placeholder"=>'xxxx-xxxx-xxxx-xxxx');
 		# END FORM DO NOT REMOVE THIS LINE
-				
 	}
 
 	public function getProfile() {			

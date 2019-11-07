@@ -88,7 +88,8 @@ class SchollarSearch extends Command
                         Storage::disk('public')->put($cariId[1].".jpg", $contents);
                         $query->update([
                             'photo'=>'storage/'.$cariId[1].".jpg",
-                            'url_schollar'=>$url
+                            'url_schollar'=>$url,
+                            'id_schollar'=>$cariId[1]
                         ]);
                     }
                     while ($i < count($karyaIlmiah[1])) {

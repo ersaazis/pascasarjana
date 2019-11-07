@@ -46,21 +46,25 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item">
                     <a class="nav-link link text-white display-4" href="{{url('/')}}">
-                        <span class="mbri-home mbr-iconfont mbr-iconfont-btn"></span>
                         Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link link text-white display-4" href="{{url('/#CariDosen')}}">
-                        <span class="mbri-search mbr-iconfont mbr-iconfont-btn"></span>
                         Cari Dosen
                     </a>
-                </li></ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="{{url('/admin')}}">
+                        Login
+                    </a>
+                </li>
+            </ul>
             
         </div>
     </nav>
 </section>
 @yield('content')
-<section once="footers" class="cid-rFvuuIVvkz" id="footer6-8">
+<section once="footers" class="cid-rFvuuIVvkz mt-5" id="footer6-8">
     <div class="container">
         <div class="media-container-row align-center mbr-white">
             <div class="col-12">

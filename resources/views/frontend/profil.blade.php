@@ -27,6 +27,14 @@
                             <div class="col-md-8 col-sm-12">
                                 <table width="100%" valign="top">
                                     <tr>
+                                        <th>NIP</th>
+                                        <td> : {{$dosen->nip}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>NIDN</th>
+                                        <td> : {{$dosen->nidn}}</td>
+                                    </tr>
+                                    <tr>
                                         <th>Nama</th>
                                         <td> : {{$dosen->name}}</td>
                                     </tr>
@@ -43,6 +51,14 @@
                                         <td> : {{$dosen->jenis_kelamin}}</td>
                                     </tr>
                                     <tr>
+                                        <th>Tempat Lahir</th>
+                                        <td> : {{$dosen->tmpt_lahir}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Tanggal Lahir</th>
+                                        <td> : {{$dosen->tanggal_lahir}}</td>
+                                    </tr>
+                                    <tr>
                                         <th>Jabatan Fungsional</th>
                                         <td> : {{$dosen->fungsional}}</td>
                                     </tr>
@@ -57,6 +73,32 @@
                                     <tr>
                                         <th>Status Aktivitas</th>
                                         <td> : {{$dosen->statuskeaktifan}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Bidang Keahlian</th>
+                                        <td> : {{$dosen->bidang_keahlian}}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Alamat</th>
+                                        <td> : {{$dosen->alamat}}</td>
+                                    </tr>
+                                    <tr>
+
+                                    <tr>
+                                        <td colspan="2">
+                                            @if($dosen->id_dikti)
+                                                <a href="https://forlap.ristekdikti.go.id/dosen/detail/{{$dosen->id_dikti}}" target="_blank" class="btn btn-info btn-sm m-0">Forlap Dikti</a>
+                                            @endif
+                                            @if($dosen->id_schollar)
+                                                <a href="https://scholar.google.co.id/citations?user={{$dosen->id_schollar}}" target="_blank" class="btn btn-info btn-sm m-0">Schollar</a>
+                                            @endif
+                                            @if($dosen->id_scopus)
+                                                <a href="https://www.scopus.com/authid/detail.uri?authorId={{$dosen->id_scopus}}" target="_blank" class="btn btn-info btn-sm m-0">Scoppus</a>
+                                            @endif
+                                            @if($dosen->id_orchid)
+                                                <a href="https://orcid.org/{{$dosen->id_orchid}}" target="_blank" class="btn btn-info btn-sm m-0">Orchid</a>                                            
+                                            @endif
+                                        </td>
                                     </tr>
                                 </table>
                             </div>
