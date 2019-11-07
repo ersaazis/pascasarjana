@@ -119,13 +119,13 @@ class SchollarSearch extends Command
                         ]);
                         $i++;
                     }
-                    $config['content'] = "(V) Schollar Google untuk ".$name;
+                    $config['content'] = "(V) Scholar Google untuk ".$name;
                     $config['to'] = CRUDBooster::adminPath('users/detail/'.$id);
                     $config['id_cms_users'] = [$id_user];
                 }
             }
             else {
-                $config['content'] = "(X) Schollar Google untuk".$name;
+                $config['content'] = "(X) Scholar Google untuk".$name;
                 $config['to'] = CRUDBooster::adminPath('users/detail/'.$id);
                 $config['id_cms_users'] = [$id_user];
                 $this->error('Data Tidak Ditemukan !');

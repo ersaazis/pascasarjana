@@ -65,14 +65,18 @@ class AdminCmsUsersController extends \crocodicstudio\crudbooster\controllers\CB
 			$this->form[] = array("label"=>"Auto Update","name"=>"auto_update",'required'=>true,'type'=>'select','validation'=>'required','dataenum'=>'1;0',"help"=>"Auto update untuk Data Mengajar dan Data Penelitian (1=iya, 0=tidak)");
 		}
 		$this->form[] = array("label"=>"ID Dikti","name"=>"id_dikti",'type'=>'text',"placeholder"=>'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
-		$this->form[] = array("label"=>"ID Schollar","name"=>"id_schollar",'type'=>'text',"placeholder"=>'xxxxxxxxxxxx');
+		$this->form[] = array("label"=>"ID Scholar","name"=>"id_schollar",'type'=>'text',"placeholder"=>'xxxxxxxxxxxx');
 		$this->form[] = array("label"=>"ID Scopus","name"=>"id_scopus",'type'=>'text',"placeholder"=>'xxxxxxxxxxx');
 		$this->form[] = array("label"=>"ID Orchid","name"=>"id_orchid",'type'=>'text',"placeholder"=>'xxxx-xxxx-xxxx-xxxx');
 		# END FORM DO NOT REMOVE THIS LINE
 
 		$this->addaction = array();
 		$this->addaction[] = ['label'=>'Reset','url'=>CRUDBooster::mainpath('reset/[id]'),'icon'=>'fa fa-refresh','color'=>'danger','showIf'=>"[id_cms_privileges] == 2", 'confirmation' => true];
-
+		$this->sub_module = array();
+		$this->sub_module[] = ['label'=>'','path'=>'dokumen_dosen','parent_columns'=>'name,email','foreign_key'=>'user_id','button_color'=>'success','button_icon'=>'fa fa-file','showIf'=>"[id_cms_privileges] == 2",];
+		$this->sub_module[] = ['label'=>'','path'=>'data_mengajar','parent_columns'=>'name,email','foreign_key'=>'user_id','button_color'=>'success','button_icon'=>'fa fa-book','showIf'=>"[id_cms_privileges] == 2",];
+		$this->sub_module[] = ['label'=>'','path'=>'data_pendidikan','parent_columns'=>'name,email','foreign_key'=>'user_id','button_color'=>'success','button_icon'=>'fa fa-graduation-cap','showIf'=>"[id_cms_privileges] == 2",];
+		$this->sub_module[] = ['label'=>'','path'=>'data_penelitian','parent_columns'=>'name,email','foreign_key'=>'user_id','button_color'=>'success','button_icon'=>'fa fa-thumb-tack','showIf'=>"[id_cms_privileges] == 2",];
 	}
 	public function getProfile() {			
 

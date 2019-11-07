@@ -90,7 +90,7 @@
                                                 <a href="https://forlap.ristekdikti.go.id/dosen/detail/{{$dosen->id_dikti}}" target="_blank" class="btn btn-info btn-sm m-0">Forlap Dikti</a>
                                             @endif
                                             @if($dosen->id_schollar)
-                                                <a href="https://scholar.google.co.id/citations?user={{$dosen->id_schollar}}" target="_blank" class="btn btn-info btn-sm m-0">Schollar</a>
+                                                <a href="https://scholar.google.co.id/citations?user={{$dosen->id_schollar}}" target="_blank" class="btn btn-info btn-sm m-0">Scholar</a>
                                             @endif
                                             @if($dosen->id_scopus)
                                                 <a href="https://www.scopus.com/authid/detail.uri?authorId={{$dosen->id_scopus}}" target="_blank" class="btn btn-info btn-sm m-0">Scoppus</a>
