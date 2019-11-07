@@ -56,7 +56,7 @@ class SchollarSearch extends Command
             $name=$data->name;
             $auto_update=$data->auto_update;
             $url_schollar=$data->url_schollar;
-            if($url_schollar)
+            if(!empty($url_schollar))
                 goto scrapdata;
 
             if($auto_update == 0 and $id_user == 0)

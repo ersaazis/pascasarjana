@@ -98,7 +98,7 @@ class DiktiSearchOld extends Command
             $name=$data->name;
             $auto_update=$data->auto_update;
             $url=$data->url_dikti;
-            if($url){
+            if(!empty($url)){
                 goto scrapdata;
             }
 
