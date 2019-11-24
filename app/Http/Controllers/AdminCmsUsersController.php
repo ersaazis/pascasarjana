@@ -55,7 +55,7 @@ class AdminCmsUsersController extends \crocodicstudio\crudbooster\controllers\CB
 			$this->form[] = array("label"=>"Tempat Lahir","name"=>"tmpt_lahir",'type'=>'text','required'=>true,'validation'=>'required');
 			$this->form[] = array("label"=>"Tanggal Lahir","name"=>"tanggal_lahir",'type'=>'date','required'=>true,'validation'=>'required');
 			$this->form[] = array("label"=>"Nama Perguruan Tinggi","name"=>"namapt",'type'=>'text','required'=>true,'validation'=>'required');
-			$this->form[] = array("label"=>"Nama Program Studi","name"=>"namaprodi",'type'=>'text','required'=>true,'validation'=>'required');
+			// $this->form[] = array("label"=>"Nama Program Studi","name"=>"namaprodi",'type'=>'text','required'=>true,'validation'=>'required');
 			$this->form[] = array("label"=>"Status Keaktifan","name"=>"statuskeaktifan",'type'=>'text');
 			$this->form[] = array("label"=>"Pendidikan","name"=>"pend_tinggi",'type'=>'text','required'=>true,'validation'=>'required');
 			$this->form[] = array("label"=>"Fungsional","name"=>"fungsional",'type'=>'text');
@@ -68,6 +68,7 @@ class AdminCmsUsersController extends \crocodicstudio\crudbooster\controllers\CB
 		$this->form[] = array("label"=>"ID Scholar","name"=>"id_schollar",'type'=>'text',"placeholder"=>'xxxxxxxxxxxx');
 		$this->form[] = array("label"=>"ID Scopus","name"=>"id_scopus",'type'=>'text',"placeholder"=>'xxxxxxxxxxx');
 		$this->form[] = array("label"=>"ID Orchid","name"=>"id_orchid",'type'=>'text',"placeholder"=>'xxxx-xxxx-xxxx-xxxx');
+		$this->form[] = array("label"=>"Program Studi","name"=>"programstudi_id","type"=>"select","datatable"=>"programstudi,nama",'required'=>true);				
 		# END FORM DO NOT REMOVE THIS LINE
 
 		$this->addaction = array();

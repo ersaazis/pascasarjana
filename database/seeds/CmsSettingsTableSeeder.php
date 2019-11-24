@@ -60,7 +60,7 @@ class CmsSettingsTableSeeder extends Seeder
             array (
                 'id' => 4,
                 'name' => 'email_sender',
-                'content' => 'support@crudbooster.com',
+                'content' => 'support@pascasarjana.com',
                 'content_input_type' => 'text',
                 'dataenum' => NULL,
                 'helper' => NULL,
@@ -73,7 +73,7 @@ class CmsSettingsTableSeeder extends Seeder
             array (
                 'id' => 5,
                 'name' => 'smtp_driver',
-                'content' => 'mail',
+                'content' => 'smtp',
                 'content_input_type' => 'select',
                 'dataenum' => 'smtp,mail,sendmail',
                 'helper' => NULL,
@@ -86,7 +86,7 @@ class CmsSettingsTableSeeder extends Seeder
             array (
                 'id' => 6,
                 'name' => 'smtp_host',
-                'content' => '',
+                'content' => 'smtp.mailtrap.io',
                 'content_input_type' => 'text',
                 'dataenum' => NULL,
                 'helper' => NULL,
@@ -99,7 +99,7 @@ class CmsSettingsTableSeeder extends Seeder
             array (
                 'id' => 7,
                 'name' => 'smtp_port',
-                'content' => '25',
+                'content' => '465',
                 'content_input_type' => 'text',
                 'dataenum' => NULL,
                 'helper' => 'default 25',
@@ -112,7 +112,7 @@ class CmsSettingsTableSeeder extends Seeder
             array (
                 'id' => 8,
                 'name' => 'smtp_username',
-                'content' => '',
+                'content' => '417c38fc958a72',
                 'content_input_type' => 'text',
                 'dataenum' => NULL,
                 'helper' => NULL,
@@ -125,7 +125,7 @@ class CmsSettingsTableSeeder extends Seeder
             array (
                 'id' => 9,
                 'name' => 'smtp_password',
-                'content' => '',
+                'content' => 'eaf86b3caf55c5',
                 'content_input_type' => 'text',
                 'dataenum' => NULL,
                 'helper' => NULL,

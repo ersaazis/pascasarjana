@@ -46,7 +46,7 @@
                                 {{$item->name}}
                             </h4>
                             <p class="mbr-text mbr-fonts-style display-7">
-                                {{$item->namaprodi}}
+                                {{$item->nama}}
                                 <center>
                                     <table width="100%">
                                         <tr>

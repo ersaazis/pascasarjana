@@ -28,5 +28,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CmsStatisticComponentsTableSeeder::class);
         $this->call(CmsStatisticsTableSeeder::class);
         $this->call(CmsUsersTableSeeder::class);
+        $this->call(KategoriDokumenTableSeeder::class);
+        $this->call(ProgramstudiTableSeeder::class);
     }
 }
