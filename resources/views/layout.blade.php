@@ -68,6 +68,12 @@
     <div class="container">
         <div class="media-container-row align-center mbr-white">
             <div class="col-12">
+                <!-- hitwebcounter Code START -->
+                    <a href="http://www.hitwebcounter.com" target="_blank">
+                    <img src="http://hitwebcounter.com/counter/counter.php?page=7164224&style=0001&nbdigits=5&type=page&initCount=0" title="." Alt="."   border="0" >
+                    </a>
+                    <br/> 
+                    <br/> 
                 <p class="mbr-text mb-0 mbr-fonts-style display-7">
                     © Copyright 2019 Pascasarjana UIN SGD Bandung- All Rights Reserved
                 </p>

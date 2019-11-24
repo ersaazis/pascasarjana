@@ -42,11 +42,11 @@
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'ID Semester','name'=>'id_smt','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Nama Kelas','name'=>'nm_kls','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Kode Matakuliah','name'=>'kode_mk','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Nama Matakuliah','name'=>'nm_mk','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Perguruan Tinggi','name'=>'namapt','type'=>'number','validation'=>'required|integer|min:0','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'ID Semester','name'=>'id_smt','type'=>'text','validation'=>'required|min:0','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Nama Kelas','name'=>'nm_kls','type'=>'text','validation'=>'required|min:0','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Kode Matakuliah','name'=>'kode_mk','type'=>'text','validation'=>'required|min:0','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Nama Matakuliah','name'=>'nm_mk','type'=>'text','validation'=>'required|min:0','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Perguruan Tinggi','name'=>'namapt','type'=>'text','validation'=>'required|min:0','width'=>'col-sm-10'];
 			if(CRUDbooster::myPrivilegeName() != "DOSEN"){
 				$this->form[] = ['label'=>'Dosen','name'=>'user_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name',"datatable_where"=>"id = 2"];
 			}

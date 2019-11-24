@@ -2,16 +2,11 @@
 @section('title',"Pascasarjana")
 @section('description',"Profil Dosen Pascasarjana Universitas Islam Negeri Sunan Gunung Djati Bandung")
 @section('content')
-    <section class="cid-rFvspSf5HV mbr-fullscreen" data-bg-video="https://m.youtube.com/watch?v=ZnuM3q1aXMQ" id="header2-1">
-        <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(35, 35, 35);"></div>
+<section class="cid-rFvspSf5HV mbr-fullscreen" style="background-image: url('{{url('assets/images/wallpaper.jpg')}}')" id="header2-1">
     
         <div class="container align-center">
             <div class="row justify-content-md-center">
                 <div class="mbr-white col-md-10">
-                    <h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-1">PASCASARJANA</h1>
-                    
-                    <p class="mbr-text pb-3 mbr-fonts-style display-5">Profil Dosen Pascasarjana Universitas Islam Negeri Sunan Gunung Djati</p>
-                    
                 </div>
             </div>
         </div>
