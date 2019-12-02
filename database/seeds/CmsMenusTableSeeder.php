@@ -113,22 +113,6 @@ class CmsMenusTableSeeder extends Seeder
                 'created_at' => '2019-10-07 03:30:23',
                 'updated_at' => '2019-10-07 03:39:16',
             ),
-            6 => 
-            array (
-                'id' => 8,
-                'name' => 'Program Studi',
-                'type' => 'Route',
-                'path' => 'AdminProgramstudiControllerGetIndex',
-                'color' => 'normal',
-                'icon' => 'fa fa-flag',
-                'parent_id' => 0,
-                'is_active' => 1,
-                'is_dashboard' => 0,
-                'id_cms_privileges' => 1,
-                'sorting' => 7,
-                'created_at' => '2019-11-24 13:46:52',
-                'updated_at' => '2019-11-24 13:56:03',
-            ),
         ));
         
         

@@ -44,7 +44,7 @@
                                     </tr>
                                     <tr>
                                         <th>Program Studi</th>
-                                        <td> : {{$programstudi}}</td>
+                                        <td> : {{$dosen->namaprodi}}</td>
                                     </tr>
                                     <tr>
                                         <th>Jenis Kelamin</th>

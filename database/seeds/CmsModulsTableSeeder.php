@@ -255,20 +255,6 @@ class CmsModulsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'deleted_at' => NULL,
             ),
-            17 => 
-            array (
-                'id' => 18,
-                'name' => 'Program Studi',
-                'icon' => 'fa fa-flag',
-                'path' => 'programstudi',
-                'table_name' => 'programstudi',
-                'controller' => 'AdminProgramstudiController',
-                'is_protected' => 0,
-                'is_active' => 0,
-                'created_at' => '2019-11-24 13:46:51',
-                'updated_at' => NULL,
-                'deleted_at' => NULL,
-            ),
         ));
         
         

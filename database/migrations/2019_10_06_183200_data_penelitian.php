@@ -21,7 +21,7 @@ class DataPenelitian extends Migration
             $table->string('tahun')->nullable();
             $table->string('url')->nullable();
             $table->integer('titasi')->nullable();
-            $table->string('url_titasi')->nullable();
+            $table->text('url_titasi')->nullable();
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('cms_users')->onDelete('cascade');
             $table->timestamps();

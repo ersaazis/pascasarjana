@@ -46,7 +46,7 @@
                                 {{$item->name}}
                             </h4>
                             <p class="mbr-text mbr-fonts-style display-7">
-                                {{$item->nama}}
+                                {{$item->namaprodi}}
                                 <center>
                                     <table width="100%">
                                         <tr>
@@ -67,6 +67,7 @@
             </div>
             @endif
             @endforeach
+            {{ $dosen->links() }}
         </div>
     </section>    
 @endsection

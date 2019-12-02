@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html  >
-<head>
-  <meta charset="UTF-8">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="generator" content="Mobirise v4.11.2, mobirise.com">
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
@@ -40,7 +40,7 @@
                          <img src="{{url(CRUDBooster::getSetting('logo'))}}" alt="Mobirise" title="" style="height: 3.8rem;">
                     </a>
                 </span>
-                <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-4" href="{{url('/')}}">PASCASARJANA</a></span>
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-4" href="{{url('http://pps.uinsgd.ac.id')}}">PASCASARJANA</a></span>
             </div>
         </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -75,7 +75,7 @@
                     <br/> 
                     <br/> 
                 <p class="mbr-text mb-0 mbr-fonts-style display-7">
-                    © Copyright 2019 Pascasarjana UIN SGD Bandung- All Rights Reserved
+                    © Copyright 2019 Unit Sistem Informasi - Pascasarjana UIN SGD Bandung 
                 </p>
             </div>
         </div>

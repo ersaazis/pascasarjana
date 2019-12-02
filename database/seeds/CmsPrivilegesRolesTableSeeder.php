@@ -240,6 +240,84 @@ class CmsPrivilegesRolesTableSeeder extends Seeder
             ),
             17 => 
             array (
+                'id' => 24,
+                'is_visible' => 1,
+                'is_create' => 1,
+                'is_read' => 1,
+                'is_edit' => 1,
+                'is_delete' => 1,
+                'id_cms_privileges' => 3,
+                'id_cms_moduls' => 15,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            18 => 
+            array (
+                'id' => 25,
+                'is_visible' => 1,
+                'is_create' => 1,
+                'is_read' => 1,
+                'is_edit' => 1,
+                'is_delete' => 1,
+                'id_cms_privileges' => 3,
+                'id_cms_moduls' => 16,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            19 => 
+            array (
+                'id' => 26,
+                'is_visible' => 1,
+                'is_create' => 1,
+                'is_read' => 1,
+                'is_edit' => 1,
+                'is_delete' => 1,
+                'id_cms_privileges' => 3,
+                'id_cms_moduls' => 17,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            20 => 
+            array (
+                'id' => 27,
+                'is_visible' => 1,
+                'is_create' => 1,
+                'is_read' => 1,
+                'is_edit' => 1,
+                'is_delete' => 1,
+                'id_cms_privileges' => 3,
+                'id_cms_moduls' => 13,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            21 => 
+            array (
+                'id' => 28,
+                'is_visible' => 1,
+                'is_create' => 1,
+                'is_read' => 1,
+                'is_edit' => 1,
+                'is_delete' => 1,
+                'id_cms_privileges' => 3,
+                'id_cms_moduls' => 12,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            22 => 
+            array (
+                'id' => 29,
+                'is_visible' => 1,
+                'is_create' => 1,
+                'is_read' => 1,
+                'is_edit' => 1,
+                'is_delete' => 1,
+                'id_cms_privileges' => 3,
+                'id_cms_moduls' => 4,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            23 => 
+            array (
                 'id' => 30,
                 'is_visible' => 1,
                 'is_create' => 1,
@@ -251,7 +329,7 @@ class CmsPrivilegesRolesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            18 => 
+            24 => 
             array (
                 'id' => 31,
                 'is_visible' => 1,
@@ -264,7 +342,7 @@ class CmsPrivilegesRolesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            19 => 
+            25 => 
             array (
                 'id' => 32,
                 'is_visible' => 1,
@@ -277,7 +355,7 @@ class CmsPrivilegesRolesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            20 => 
+            26 => 
             array (
                 'id' => 33,
                 'is_visible' => 1,
@@ -290,7 +368,7 @@ class CmsPrivilegesRolesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
-            21 => 
+            27 => 
             array (
                 'id' => 34,
                 'is_visible' => 1,
@@ -299,110 +377,6 @@ class CmsPrivilegesRolesTableSeeder extends Seeder
                 'is_edit' => 1,
                 'is_delete' => 1,
                 'id_cms_privileges' => 2,
-                'id_cms_moduls' => 4,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            22 => 
-            array (
-                'id' => 35,
-                'is_visible' => 1,
-                'is_create' => 1,
-                'is_read' => 1,
-                'is_edit' => 1,
-                'is_delete' => 1,
-                'id_cms_privileges' => 1,
-                'id_cms_moduls' => 18,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            23 => 
-            array (
-                'id' => 36,
-                'is_visible' => 1,
-                'is_create' => 1,
-                'is_read' => 1,
-                'is_edit' => 1,
-                'is_delete' => 1,
-                'id_cms_privileges' => 3,
-                'id_cms_moduls' => 15,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            24 => 
-            array (
-                'id' => 37,
-                'is_visible' => 1,
-                'is_create' => 1,
-                'is_read' => 1,
-                'is_edit' => 1,
-                'is_delete' => 1,
-                'id_cms_privileges' => 3,
-                'id_cms_moduls' => 16,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            25 => 
-            array (
-                'id' => 38,
-                'is_visible' => 1,
-                'is_create' => 1,
-                'is_read' => 1,
-                'is_edit' => 1,
-                'is_delete' => 1,
-                'id_cms_privileges' => 3,
-                'id_cms_moduls' => 17,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            26 => 
-            array (
-                'id' => 39,
-                'is_visible' => 1,
-                'is_create' => 1,
-                'is_read' => 1,
-                'is_edit' => 1,
-                'is_delete' => 1,
-                'id_cms_privileges' => 3,
-                'id_cms_moduls' => 13,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            27 => 
-            array (
-                'id' => 40,
-                'is_visible' => 1,
-                'is_create' => 1,
-                'is_read' => 1,
-                'is_edit' => 1,
-                'is_delete' => 1,
-                'id_cms_privileges' => 3,
-                'id_cms_moduls' => 12,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            28 => 
-            array (
-                'id' => 41,
-                'is_visible' => 1,
-                'is_create' => 1,
-                'is_read' => 1,
-                'is_edit' => 1,
-                'is_delete' => 1,
-                'id_cms_privileges' => 3,
-                'id_cms_moduls' => 18,
-                'created_at' => NULL,
-                'updated_at' => NULL,
-            ),
-            29 => 
-            array (
-                'id' => 42,
-                'is_visible' => 1,
-                'is_create' => 1,
-                'is_read' => 1,
-                'is_edit' => 1,
-                'is_delete' => 1,
-                'id_cms_privileges' => 3,
                 'id_cms_moduls' => 4,
                 'created_at' => NULL,
                 'updated_at' => NULL,
