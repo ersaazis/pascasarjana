@@ -16,10 +16,10 @@ class DataPenelitian extends Migration
         Schema::create('data_penelitian', function (Blueprint $table) {
             $table->increments('id')->nullable();
             $table->text('judul')->nullable();
-            $table->string('penulis')->nullable();
-            $table->string('publis')->nullable();
-            $table->string('tahun')->nullable();
-            $table->string('url')->nullable();
+            $table->text('penulis')->nullable();
+            $table->text('publis')->nullable();
+            $table->text('tahun')->nullable();
+            $table->text('url')->nullable();
             $table->integer('titasi')->nullable();
             $table->text('url_titasi')->nullable();
             $table->unsignedInteger('user_id');

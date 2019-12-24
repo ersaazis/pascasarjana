@@ -266,7 +266,7 @@
 	    public function hook_before_add(&$postdata) {        
 	        //Your code here
 			if(CRUDbooster::myPrivilegeName() == "DOSEN"){
-				$postdata['user_id']=CRUDBooster::getCurrentId();
+				$postdata['user_id']=CRUDBooster::myId();
 			}
 	    }
 
@@ -293,7 +293,7 @@
 	    public function hook_before_edit(&$postdata,$id) {        
 	        //Your code here
 			if(CRUDbooster::myPrivilegeName() == "DOSEN"){
-				$postdata['user_id']=CRUDBooster::getCurrentId();
+				$postdata['user_id']=CRUDBooster::myId();
 			}
 	    }
 

@@ -18,5 +18,7 @@ Route::get('/cari', 'ProfilDosen@cari');
 Route::middleware(['web','\crocodicstudio\crudbooster\middlewares\CBBackend'])->prefix(config('crudbooster.ADMIN_PATH'))->group(function () {
 	Route::get('/users/reset/{id}', 'AdminCmsUsersController@reset');
 	Route::get('/users/dosen', 'TambahDosen@add');
+	Route::get('/status', 'StatusProses@index')->name('statusproses');
+	Route::get('/status/aktif', 'StatusProses@aktif');
 	Route::post('/users/dosen', 'TambahDosen@save')->name('addDosen');
 });

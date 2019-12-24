@@ -41,8 +41,8 @@ class AutoUpdate extends Command
     {
         $dosen=DB::table('cms_users')->where('auto_update',1)->where('id_cms_privileges',2)->get();
         foreach($dosen as $d){
-            Artisan::queue('scholar:search', ['id' => $d->id])->onConnection('database')->onQueue('autoupdate');
-            Artisan::queue('diktiold:search', ['id' => $d->id])->onConnection('database')->onQueue('autoupdate');    
+            Artisan::call('scholar:search', ['id' => $d->id]);
+            Artisan::call('diktiold:search', ['id' => $d->id]);    
         }
     }
 }
