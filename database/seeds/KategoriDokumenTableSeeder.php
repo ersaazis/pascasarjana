@@ -73,6 +73,34 @@ class KategoriDokumenTableSeeder extends Seeder
                 'created_at' => '2019-11-07 18:57:14',
                 'updated_at' => NULL,
             ),
+            8 => 
+            array (
+                'id' => 9,
+                'nama' => 'Award',
+                'created_at' => '2019-12-12 01:25:35',
+                'updated_at' => '2019-12-12 01:33:29',
+            ),
+            9 => 
+            array (
+                'id' => 10,
+                'nama' => 'Proceedings',
+                'created_at' => '2019-12-12 01:26:08',
+                'updated_at' => NULL,
+            ),
+            10 => 
+            array (
+                'id' => 11,
+                'nama' => 'Buku',
+                'created_at' => '2019-12-12 01:26:25',
+                'updated_at' => NULL,
+            ),
+            11 => 
+            array (
+                'id' => 12,
+                'nama' => 'Membership',
+                'created_at' => '2019-12-12 03:00:12',
+                'updated_at' => NULL,
+            ),
         ));
         
         

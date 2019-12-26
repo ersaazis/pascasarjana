@@ -19,7 +19,7 @@ class StatusProses extends Controller
             echo "$commands - <br>";
             exec("/usr/local/bin/ea-php72 -c /home/ppsuinsgd/pascasarjanasys/php.ini /home/ppsuinsgd/pascasarjanasys/artisan queue:work database --queue=commands > /dev/null 2>/dev/null &"); 
         }
-        header('Location: https://pps.uinsgd.ac.id/profil/admin/statistic_builder/dashboard');
+        return back();
     }
 
     public function index(){
@@ -62,6 +62,6 @@ class StatusProses extends Controller
         </table>
         ";
         if($commands == 0 or $autoupdate == 0)
-            echo '<center><a href="/profil/admin/status/aktif" class="btn btn-sm btn-primary">Aktifkan Semua Proses</a></center>';
+            echo '<center><a href="/admin/status/aktif" class="btn btn-sm btn-primary">Aktifkan Semua Proses</a></center>';
     }
 }
