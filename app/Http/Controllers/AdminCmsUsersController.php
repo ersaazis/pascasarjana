@@ -38,7 +38,7 @@ class AdminCmsUsersController extends \crocodicstudio\crudbooster\controllers\CB
 
 		# START FORM DO NOT REMOVE THIS LINE
 		$this->form = array(); 		
-		if(CRUDbooster::myPrivilegeName() == "DOSEN"){
+		if(strpos(CRUDbooster::myPrivilegeName(), "DOSEN") !== false){
 			$this->form[] = array("label"=>"NIP","name"=>"nip",'type'=>'text','required'=>true,'validation'=>'required');
 			$this->form[] = array("label"=>"NIDN","name"=>"nidn",'type'=>'text','required'=>true,'validation'=>'required');
 		}
@@ -50,7 +50,7 @@ class AdminCmsUsersController extends \crocodicstudio\crudbooster\controllers\CB
 		// $this->form[] = array("label"=>"Password","name"=>"password","type"=>"password","help"=>"Kosongkan jika tidak ingin diganti");
 		$this->form[] = array("label"=>"Password","name"=>"password","type"=>"password","help"=>"Kosongkan jika tidak ingin diganti");
 		$this->form[] = array("label"=>"Konfirmasi Password","name"=>"password_confirmation","type"=>"password","help"=>"Kosongkan jika tidak ingin diganti");
-		if(CRUDbooster::myPrivilegeName() == "DOSEN"){
+		if(strpos(CRUDbooster::myPrivilegeName(), "DOSEN") !== false){
 			$this->form[] = array("label"=>"Jenis Kelamin","name"=>"jenis_kelamin",'type'=>'select','dataenum'=>'Laki-Laki;Perempuan','required'=>true,'validation'=>'required');
 			$this->form[] = array("label"=>"Tempat Lahir","name"=>"tmpt_lahir",'type'=>'text','required'=>true,'validation'=>'required');
 			$this->form[] = array("label"=>"Tanggal Lahir","name"=>"tanggal_lahir",'type'=>'date','required'=>true,'validation'=>'required');

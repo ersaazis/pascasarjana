@@ -47,7 +47,7 @@ class CmsMenusTableSeeder extends Seeder
                 'id_cms_privileges' => 1,
                 'sorting' => 2,
                 'created_at' => '2019-10-07 02:57:05',
-                'updated_at' => '2019-10-07 03:36:51',
+                'updated_at' => '2019-12-28 15:28:01',
             ),
             2 => 
             array (
@@ -63,7 +63,7 @@ class CmsMenusTableSeeder extends Seeder
                 'id_cms_privileges' => 1,
                 'sorting' => 4,
                 'created_at' => '2019-10-07 03:04:05',
-                'updated_at' => '2019-10-07 03:37:19',
+                'updated_at' => '2019-12-28 15:27:52',
             ),
             3 => 
             array (
@@ -79,7 +79,7 @@ class CmsMenusTableSeeder extends Seeder
                 'id_cms_privileges' => 1,
                 'sorting' => 5,
                 'created_at' => '2019-10-07 03:06:25',
-                'updated_at' => '2019-10-07 03:37:52',
+                'updated_at' => '2019-12-28 15:27:47',
             ),
             4 => 
             array (
@@ -95,7 +95,7 @@ class CmsMenusTableSeeder extends Seeder
                 'id_cms_privileges' => 1,
                 'sorting' => 6,
                 'created_at' => '2019-10-07 03:10:09',
-                'updated_at' => '2019-10-07 03:36:11',
+                'updated_at' => '2019-12-28 15:27:33',
             ),
             5 => 
             array (
@@ -160,6 +160,22 @@ class CmsMenusTableSeeder extends Seeder
                 'sorting' => NULL,
                 'created_at' => '2019-12-11 00:46:15',
                 'updated_at' => '2019-12-11 00:46:27',
+            ),
+            9 => 
+            array (
+                'id' => 11,
+                'name' => 'MOU',
+                'type' => 'Route',
+                'path' => 'AdminMouControllerGetIndex',
+                'color' => 'normal',
+                'icon' => 'fa fa-file-text',
+                'parent_id' => 0,
+                'is_active' => 1,
+                'is_dashboard' => 0,
+                'id_cms_privileges' => 1,
+                'sorting' => 8,
+                'created_at' => '2019-12-26 18:39:43',
+                'updated_at' => '2019-12-28 15:28:10',
             ),
         ));
         

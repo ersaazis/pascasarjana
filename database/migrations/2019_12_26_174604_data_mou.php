@@ -17,7 +17,7 @@ class DataMou extends Migration
             $table->increments('id');
             $table->string('judul');
             $table->string('file');
-            $table->string('thumbnail');
+            $table->string('thumbnail')->nullable();
             $table->timestamps();
         });
     }

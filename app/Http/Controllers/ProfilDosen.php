@@ -8,7 +8,10 @@ use Illuminate\Support\Facades\DB;
 class ProfilDosen extends Controller
 {
     public function index(){
-        $cms_user=DB::table('cms_users')->select('cms_users.*','programstudi.nama')->join('programstudi', 'programstudi.id', '=', 'cms_users.programstudi_id')->where('id_cms_privileges',2)->orderBy(DB::raw('RAND(1234)'))->paginate(12);
+        $cms_user=DB::table('cms_users')->select('cms_users.*','programstudi.nama')->join('programstudi', 'programstudi.id', '=', 'cms_users.programstudi_id')->where(function ($query) {
+            $query->where('id_cms_privileges',2)
+                  ->orWhere('id_cms_privileges',4);
+        })->orderBy(DB::raw('RAND(1234)'))->paginate(12);
         $random=$cms_user[rand(0,count($cms_user)-1)];
         return view('frontend.home')
             ->with('i',0)
@@ -18,7 +21,10 @@ class ProfilDosen extends Controller
     public function cari(Request $request){
         $data=$request->all();
         $nama=$data['Cari'];
-        $cms_user=DB::table('cms_users')->where('name','LIKE','%'.$nama.'%')->where('id_cms_privileges',2)->paginate(15);
+        $cms_user=DB::table('cms_users')->where('name','LIKE','%'.$nama.'%')->where(function ($query) {
+            $query->where('id_cms_privileges',2)
+                  ->orWhere('id_cms_privileges',4);
+        })->paginate(15);
         return view('frontend.cari')
             ->with('i',0)
             ->with('nama',$nama)
@@ -41,5 +47,15 @@ class ProfilDosen extends Controller
             ->with('dosen',$cms_user);
         }
         else return redirect('/');
+    }
+    public function mou(Request $request){
+        $data=$request->all();
+        $nama=$data['Cari'];
+        $data=DB::table('mou')->where('judul','LIKE','%'.$nama.'%')->paginate(15);
+        // print_r($data);
+        return view('frontend.mou')
+            ->with('i',0)
+            ->with('nama',$nama)
+            ->with('data',$data);
     }
 }

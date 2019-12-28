@@ -39,7 +39,10 @@ class DiktiSearch extends Command
     public function handle()
     {
         $id = $this->argument('id');
-        $query=DB::table('cms_users')->where('id',$id)->where('id_cms_privileges',2);
+        $query=DB::table('cms_users')->where('id',$id)->where(function ($query) {
+            $query->where('id_cms_privileges',2)
+                  ->orWhere('id_cms_privileges',4);
+        });
         $data=$query->first();
         if(empty($data)){
             $this->error('User Tidak Ditemukan !');

@@ -269,6 +269,20 @@ class CmsModulsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'deleted_at' => NULL,
             ),
+            18 => 
+            array (
+                'id' => 19,
+                'name' => 'MOU',
+                'icon' => 'fa fa-file-text',
+                'path' => 'mou',
+                'table_name' => 'mou',
+                'controller' => 'AdminMouController',
+                'is_protected' => 0,
+                'is_active' => 0,
+                'created_at' => '2019-12-26 18:39:43',
+                'updated_at' => NULL,
+                'deleted_at' => NULL,
+            ),
         ));
         
         

@@ -42,7 +42,10 @@ class SchollarSearch extends Command
     {
         $id = $this->argument('id');
         $id_user = $this->argument('id_user');
-        $query=DB::table('cms_users')->where('id',$id)->where('id_cms_privileges',2);
+        $query=DB::table('cms_users')->where('id',$id)->where(function ($query) {
+            $query->where('id_cms_privileges',2)
+                  ->orWhere('id_cms_privileges',4);
+        });
         $data=$query->first();
         if(empty($data)){
             $this->error('User Tidak Ditemukan !');

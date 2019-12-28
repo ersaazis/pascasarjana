@@ -4,8 +4,9 @@
 	use Request;
 	use DB;
 	use CRUDBooster;
+	use Intervention\Image\Facades\Image;
 
-	class AdminDokumenDosenController extends \crocodicstudio\crudbooster\controllers\CBController {
+	class AdminMouController extends \crocodicstudio\crudbooster\controllers\CBController {
 
 	    public function cbInit() {
 
@@ -22,38 +23,29 @@
 			$this->button_delete = true;
 			$this->button_detail = true;
 			$this->button_show = true;
-			$this->button_filter = false;
+			$this->button_filter = true;
 			$this->button_import = false;
 			$this->button_export = false;
-			$this->table = "dokumen_dosen";
+			$this->table = "mou";
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
 			$this->col[] = ["label"=>"Judul","name"=>"judul"];
 			$this->col[] = ["label"=>"File","name"=>"file","download"=>true];
-			$this->col[] = ["label"=>"Kategori","name"=>"kategori_id","join"=>"kategori_dokumen,nama"];
-			if(strpos(CRUDbooster::myPrivilegeName(), "DOSEN") === false){
-				$this->col[] = ["label"=>"Dosen","name"=>"user_id","join"=>"cms_users,name"];
-			}
+			$this->col[] = ["label"=>"Thumbnail","name"=>"thumbnail","image"=>true];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Judul','name'=>'judul','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
+			$this->form[] = ['label'=>'Judul','name'=>'judul','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'File','name'=>'file','type'=>'upload','validation'=>'required','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Kategori','name'=>'kategori_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'kategori_dokumen,nama'];
-			if(strpos(CRUDbooster::myPrivilegeName(), "DOSEN") === false){
-				$this->form[] = ['label'=>'Dosen','name'=>'user_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name',"datatable_where"=>"id_cms_privileges = 2"];
-			}
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ['label'=>'Judul','name'=>'judul','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'You can only enter the letter only'];
-			//$this->form[] = ['label'=>'File','name'=>'file','type'=>'upload','validation'=>'required|min:1|max:255','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'Kategori','name'=>'kategori_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'kategori_dokumen,nama'];
-			//$this->form[] = ['label'=>'User','name'=>'user_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name'];
+			//$this->form[] = ['label'=>'Judul','name'=>'judul','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10'];
+			//$this->form[] = ['label'=>'File','name'=>'file','type'=>'upload','validation'=>'required','width'=>'col-sm-10'];
 			# OLD END FORM
 
 			/* 
@@ -241,9 +233,7 @@
 	    */
 	    public function hook_query_index(&$query) {
 	        //Your code here
-			if(strpos(CRUDbooster::myPrivilegeName(), "DOSEN") !== false){
-				$query->where($this->table.'.user_id',CRUDBooster::myId());
-			}
+	            
 	    }
 
 	    /*
@@ -265,10 +255,8 @@
 	    */
 	    public function hook_before_add(&$postdata) {        
 	        //Your code here
-			if(strpos(CRUDbooster::myPrivilegeName(), "DOSEN") !== false){
-				$postdata['user_id']=CRUDBooster::myId();
-			}
-	    }
+
+		}
 
 	    /* 
 	    | ---------------------------------------------------------------------- 
@@ -279,6 +267,10 @@
 	    */
 	    public function hook_after_add($id) {        
 	        //Your code here
+			// $file=DB::table('mou')->find($id);
+			// print_r(storage_path('app/'.$file->file));
+			// Image::make(storage_path('app/'.$file->file))->resize(320, 240)->save(storage_path('app\uploads\1\2019-12\x.jpg'));
+			// exit();
 
 	    }
 
@@ -292,9 +284,7 @@
 	    */
 	    public function hook_before_edit(&$postdata,$id) {        
 	        //Your code here
-			if(strpos(CRUDbooster::myPrivilegeName(), "DOSEN") !== false){
-				$postdata['user_id']=CRUDBooster::myId();
-			}
+
 	    }
 
 	    /* 

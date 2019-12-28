@@ -39,7 +39,10 @@ class AutoUpdate extends Command
      */
     public function handle()
     {
-        $dosen=DB::table('cms_users')->where('auto_update',1)->where('id_cms_privileges',2)->get();
+        $dosen=DB::table('cms_users')->where('auto_update',1)->where(function ($query) {
+            $query->where('id_cms_privileges',2)
+                  ->orWhere('id_cms_privileges',4);
+        })->get();
         foreach($dosen as $d){
             Artisan::call('scholar:search', ['id' => $d->id]);
             Artisan::call('diktiold:search', ['id' => $d->id]);    

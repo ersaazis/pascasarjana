@@ -224,7 +224,7 @@
 	    */
 	    public function hook_query_index(&$query) {
 	        //Your code here
-			if(CRUDbooster::myPrivilegeName() == "DOSEN"){
+			if(strpos(CRUDbooster::myPrivilegeName(), "DOSEN") !== false){
 				$query->where($this->table.'.user_id',CRUDBooster::myId());
 			}
 	    }

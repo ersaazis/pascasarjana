@@ -44,6 +44,15 @@ class CmsPrivilegesTableSeeder extends Seeder
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
+            3 => 
+            array (
+                'id' => 4,
+                'name' => 'SPESIAL DOSEN',
+                'is_superadmin' => 0,
+                'theme_color' => 'skin-green-light',
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
         ));
         
         

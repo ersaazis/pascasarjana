@@ -37,7 +37,7 @@
 			$this->col[] = ["label"=>"Url","name"=>"url"];
 			$this->col[] = ["label"=>"Sitasi","name"=>"titasi"];
 			$this->col[] = ["label"=>"Url Titasi","name"=>"url_titasi"];
-			if(CRUDbooster::myPrivilegeName() != "DOSEN"){
+			if(strpos(CRUDbooster::myPrivilegeName(), "DOSEN") === false){
 				$this->col[] = ["label"=>"Dosen","name"=>"user_id","join"=>"cms_users,name"];
 			}
 			# END COLUMNS DO NOT REMOVE THIS LINE
@@ -51,7 +51,7 @@
 			$this->form[] = ['label'=>'Url','name'=>'url','type'=>'text','validation'=>'required|url','width'=>'col-sm-10','placeholder'=>'Masukan URL yang valid'];
 			$this->form[] = ['label'=>'Jumlah Titasi','name'=>'titasi','type'=>'number','validation'=>'required','width'=>'col-sm-10'];
 			$this->form[] = ['label'=>'Url Titasi','name'=>'url_titasi','type'=>'text','validation'=>'required|url','width'=>'col-sm-10','placeholder'=>'Masukan URL yang valid'];
-			if(CRUDbooster::myPrivilegeName() != "DOSEN"){
+			if(strpos(CRUDbooster::myPrivilegeName(), "DOSEN") === false){
 				$this->form[] = ['label'=>'Dosen','name'=>'user_id','type'=>'select2','validation'=>'required|integer|min:0','width'=>'col-sm-10','datatable'=>'cms_users,name',"datatable_where"=>"id = 2"];
 			}
 			# END FORM DO NOT REMOVE THIS LINE
@@ -251,7 +251,7 @@
 	    */
 	    public function hook_query_index(&$query) {
 	        //Your code here
-			if(CRUDbooster::myPrivilegeName() == "DOSEN"){
+			if(strpos(CRUDbooster::myPrivilegeName(), "DOSEN") !== false){
 				$query->where($this->table.'.user_id',CRUDBooster::myId());
 			}
 	    }
@@ -275,7 +275,7 @@
 	    */
 	    public function hook_before_add(&$postdata) {        
 	        //Your code here
-			if(CRUDbooster::myPrivilegeName() == "DOSEN"){
+			if(strpos(CRUDbooster::myPrivilegeName(), "DOSEN") !== false){
 				$postdata['user_id']=CRUDBooster::getCurrentId();
 			}
 	    }
@@ -302,7 +302,7 @@
 	    */
 	    public function hook_before_edit(&$postdata,$id) {        
 	        //Your code here
-			if(CRUDbooster::myPrivilegeName() == "DOSEN"){
+			if(strpos(CRUDbooster::myPrivilegeName(), "DOSEN") !== false){
 				$postdata['user_id']=CRUDBooster::getCurrentId();
 			}
 	    }
