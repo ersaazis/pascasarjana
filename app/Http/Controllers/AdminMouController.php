@@ -33,7 +33,7 @@
 			$this->col = [];
 			$this->col[] = ["label"=>"Judul","name"=>"judul"];
 			$this->col[] = ["label"=>"File","name"=>"file","download"=>true];
-			$this->col[] = ["label"=>"Thumbnail","name"=>"thumbnail","image"=>true];
+			// $this->col[] = ["label"=>"Thumbnail","name"=>"thumbnail","image"=>true];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE

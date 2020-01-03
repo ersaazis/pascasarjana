@@ -93,10 +93,10 @@
                                                 <a href="https://scholar.google.co.id/citations?user={{$dosen->id_schollar}}" target="_blank" class="btn btn-info btn-sm m-0">Scholar</a>
                                             @endif
                                             @if($dosen->id_scopus)
-                                                <a href="https://www.scopus.com/authid/detail.uri?authorId={{$dosen->id_scopus}}" target="_blank" class="btn btn-info btn-sm m-0">Scoppus</a>
+                                                <a href="https://www.scopus.com/authid/detail.uri?authorId={{$dosen->id_scopus}}" target="_blank" class="btn btn-info btn-sm m-0">Scopus</a>
                                             @endif
                                             @if($dosen->id_orchid)
-                                                <a href="https://orcid.org/{{$dosen->id_orchid}}" target="_blank" class="btn btn-info btn-sm m-0">Orchid</a>                                            
+                                                <a href="https://orcid.org/{{$dosen->id_orchid}}" target="_blank" class="btn btn-info btn-sm m-0">Orcid</a>                                            
                                             @endif
                                         </td>
                                     </tr>

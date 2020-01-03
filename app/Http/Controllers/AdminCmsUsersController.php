@@ -67,7 +67,7 @@ class AdminCmsUsersController extends \crocodicstudio\crudbooster\controllers\CB
 		$this->form[] = array("label"=>"ID Dikti","name"=>"id_dikti",'type'=>'text',"placeholder"=>'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
 		$this->form[] = array("label"=>"ID Scholar","name"=>"id_schollar",'type'=>'text',"placeholder"=>'xxxxxxxxxxxx');
 		$this->form[] = array("label"=>"ID Scopus","name"=>"id_scopus",'type'=>'text',"placeholder"=>'xxxxxxxxxxx');
-		$this->form[] = array("label"=>"ID Orchid","name"=>"id_orchid",'type'=>'text',"placeholder"=>'xxxx-xxxx-xxxx-xxxx');
+		$this->form[] = array("label"=>"ID Orcid","name"=>"id_orchid",'type'=>'text',"placeholder"=>'xxxx-xxxx-xxxx-xxxx');
 		$this->form[] = array("label"=>"Program Studi","name"=>"programstudi_id","type"=>"select","datatable"=>"programstudi,nama",'required'=>true);				
 		# END FORM DO NOT REMOVE THIS LINE
 

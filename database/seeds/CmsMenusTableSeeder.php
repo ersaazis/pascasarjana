@@ -164,7 +164,7 @@ class CmsMenusTableSeeder extends Seeder
             9 => 
             array (
                 'id' => 11,
-                'name' => 'MOU',
+                'name' => 'Kerjasama',
                 'type' => 'Route',
                 'path' => 'AdminMouControllerGetIndex',
                 'color' => 'normal',
@@ -175,7 +175,7 @@ class CmsMenusTableSeeder extends Seeder
                 'id_cms_privileges' => 1,
                 'sorting' => 8,
                 'created_at' => '2019-12-26 18:39:43',
-                'updated_at' => '2019-12-28 15:28:10',
+                'updated_at' => '2020-01-01 16:16:05',
             ),
         ));
         

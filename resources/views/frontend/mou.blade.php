@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layout2')
 @section('title',"Pascasarjana")
 @section('description',"Hasil Pencarian $nama Untuk MOU Pascasarjana Universitas Islam Negeri Sunan Gunung Djati Bandung")
 @section('content')
@@ -8,7 +8,7 @@
         <div class="container">
             <div class="media-container-row">
                 <div class="title col-12 col-md-8">
-                    <h2 class="align-center mbr-bold mbr-white pb-3 mbr-fonts-style display-2">MOU PASCASARJANA <br> UIN Sunan Gunung Djati Bandung</h2>
+                    <h2 class="align-center mbr-bold mbr-white pb-3 mbr-fonts-style display-2">KERJASAMA PASCASARJANA <br> UIN Sunan Gunung Djati Bandung</h2>
                     <h3 class="mbr-section-subtitle align-center mbr-light mbr-white pb-3 mbr-fonts-style display-5">{{$nama}}</h3>
                 </div>
             </div>
@@ -19,7 +19,7 @@
             <form action="{{url('/mou/')}}" method="GET">
             @csrf
             <div class="input-group">
-                <input type="text" placeholder="Judul MOU" value="{{$nama}}" class="form-control" name="Cari">
+                <input type="text" placeholder="Judul Kerjasama" value="{{$nama}}" class="form-control" name="Cari">
                 <div class="input-group-prepend">
                     <input type="submit" class=" btn btn-primary input-group-text m-0 pb-0 pt-0" value="Cari " />
                 </div>

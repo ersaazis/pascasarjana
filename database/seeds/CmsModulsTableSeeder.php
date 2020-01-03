@@ -272,8 +272,8 @@ class CmsModulsTableSeeder extends Seeder
             18 => 
             array (
                 'id' => 19,
-                'name' => 'MOU',
-                'icon' => 'fa fa-file-text',
+                'name' => 'Kerjasama',
+                'icon' => 'fa fa-flag-o',
                 'path' => 'mou',
                 'table_name' => 'mou',
                 'controller' => 'AdminMouController',
