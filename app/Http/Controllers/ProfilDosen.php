@@ -51,7 +51,7 @@ class ProfilDosen extends Controller
     public function kerjasama(Request $request){
         $data=$request->all();
         $nama=$data['Cari'];
-        $data=DB::table('mou')->where('judul','LIKE','%'.$nama.'%')->paginate(15);
+        $data=DB::table('mou')->where('judul','LIKE','%'.$nama.'%')->orderBy('judul')->paginate(15);
         // print_r($data);
         return view('frontend.kerjasama')
             ->with('i',0)
@@ -61,7 +61,7 @@ class ProfilDosen extends Controller
     public function akreditasi(Request $request){
         $data=$request->all();
         $nama=$data['Cari'];
-        $data=DB::table('akreditasi')->where('judul','LIKE','%'.$nama.'%')->paginate(15);
+        $data=DB::table('akreditasi')->where('judul','LIKE','%'.$nama.'%')->orderBy('judul')->paginate(15);
         // print_r($data);
         return view('frontend.akreditasi')
             ->with('i',0)
