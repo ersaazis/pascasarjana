@@ -31,15 +31,14 @@
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
 			$this->col[] = ["label"=>"Judul","name"=>"judul"];
-			$this->col[] = ["label"=>"File","name"=>"file"];
-			$this->col[] = ["label"=>"Thumbnail","name"=>"thumbnail","image"=>true];
+			$this->col[] = ["label"=>"File","name"=>"file","download"=>true];
+			// $this->col[] = ["label"=>"Thumbnail","name"=>"thumbnail","image"=>true];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Judul','name'=>'judul','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'Anda hanya dapat memasukkan huruf saja'];
-			$this->form[] = ['label'=>'File','name'=>'file','type'=>'upload','validation'=>'required|required','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'Thumbnail','name'=>'thumbnail','type'=>'upload','validation'=>'required|image|max:3000','width'=>'col-sm-10','help'=>'Tipe file yang didukung: JPG, JPEG, PNG, GIF, BMP'];
+			$this->form[] = ['label'=>'Judul','name'=>'judul','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'File','name'=>'file','type'=>'upload','validation'=>'required','width'=>'col-sm-10'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
