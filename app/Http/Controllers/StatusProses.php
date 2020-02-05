@@ -62,6 +62,6 @@ class StatusProses extends Controller
         </table>
         ";
         if($commands == 0 or $autoupdate == 0)
-            echo '<center><a href="/admin/status/aktif" class="btn btn-sm btn-primary">Aktifkan Semua Proses</a></center>';
+            echo '<center><a href="'.url('/admin/status/aktif').'" class="btn btn-sm btn-primary">Aktifkan Semua Proses</a></center>';
     }
 }
