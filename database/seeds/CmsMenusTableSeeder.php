@@ -159,7 +159,7 @@ class CmsMenusTableSeeder extends Seeder
                 'id_cms_privileges' => 1,
                 'sorting' => NULL,
                 'created_at' => '2019-12-11 00:46:15',
-                'updated_at' => '2019-12-11 00:46:27',
+                'updated_at' => '2020-02-05 09:51:24',
             ),
             9 => 
             array (
@@ -183,7 +183,7 @@ class CmsMenusTableSeeder extends Seeder
                 'name' => 'Akreditasi',
                 'type' => 'Route',
                 'path' => 'AdminAkreditasiControllerGetIndex',
-                'color' => NULL,
+                'color' => 'normal',
                 'icon' => 'fa fa-file-text',
                 'parent_id' => 0,
                 'is_active' => 1,
@@ -191,7 +191,7 @@ class CmsMenusTableSeeder extends Seeder
                 'id_cms_privileges' => 1,
                 'sorting' => 9,
                 'created_at' => '2020-02-05 07:31:30',
-                'updated_at' => NULL,
+                'updated_at' => '2020-02-05 09:51:06',
             ),
         ));
         
