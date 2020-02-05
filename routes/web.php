@@ -14,7 +14,8 @@
 Route::get('/', 'ProfilDosen@index');
 Route::get('/profil/{id}/{nama}', 'ProfilDosen@profil');
 Route::get('/cari', 'ProfilDosen@cari');
-Route::get('/mou', 'ProfilDosen@mou');
+Route::get('/kerjasama', 'ProfilDosen@kerjasama');
+Route::get('/akreditasi', 'ProfilDosen@akreditasi');
 
 Route::middleware(['web','\crocodicstudio\crudbooster\middlewares\CBBackend'])->prefix(config('crudbooster.ADMIN_PATH'))->group(function () {
 	Route::get('/users/reset/{id}', 'AdminCmsUsersController@reset');

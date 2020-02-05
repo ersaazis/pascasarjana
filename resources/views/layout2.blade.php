@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
   <link rel="shortcut icon" href="{{url('/')}}/assets/images/uin-sunan-gunung-djati-122x92.png" type="image/x-icon">
   <meta name="description" content="@yield('description','Profil Dosen Pascasarjana Universitas Islam Negeri Sunan Gunung Djati Bandung')">
+  <meta name='robots' content='noindex, nofollow, noarchive'>
   
   <title>@yield('title') - UIN Sunan Gunung Djati Bandung</title>
   <link rel="stylesheet" href="{{url('/')}}/assets/web/assets/mobirise-icons/mobirise-icons.css">

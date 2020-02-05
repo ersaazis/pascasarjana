@@ -283,6 +283,20 @@ class CmsModulsTableSeeder extends Seeder
                 'updated_at' => NULL,
                 'deleted_at' => NULL,
             ),
+            19 => 
+            array (
+                'id' => 20,
+                'name' => 'Akreditasi',
+                'icon' => 'fa fa-file-text',
+                'path' => 'akreditasi',
+                'table_name' => 'akreditasi',
+                'controller' => 'AdminAkreditasiController',
+                'is_protected' => 0,
+                'is_active' => 0,
+                'created_at' => '2020-02-05 07:31:30',
+                'updated_at' => NULL,
+                'deleted_at' => NULL,
+            ),
         ));
         
         

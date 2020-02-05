@@ -4,9 +4,8 @@
 	use Request;
 	use DB;
 	use CRUDBooster;
-	use Intervention\Image\Facades\Image;
 
-	class AdminMouController extends \crocodicstudio\crudbooster\controllers\CBController {
+	class AdminAkreditasiController extends \crocodicstudio\crudbooster\controllers\CBController {
 
 	    public function cbInit() {
 
@@ -26,26 +25,28 @@
 			$this->button_filter = true;
 			$this->button_import = false;
 			$this->button_export = false;
-			$this->table = "kerjasama";
+			$this->table = "akreditasi";
 			# END CONFIGURATION DO NOT REMOVE THIS LINE
 
 			# START COLUMNS DO NOT REMOVE THIS LINE
 			$this->col = [];
 			$this->col[] = ["label"=>"Judul","name"=>"judul"];
-			$this->col[] = ["label"=>"File","name"=>"file","download"=>true];
-			// $this->col[] = ["label"=>"Thumbnail","name"=>"thumbnail","image"=>true];
+			$this->col[] = ["label"=>"File","name"=>"file"];
+			$this->col[] = ["label"=>"Thumbnail","name"=>"thumbnail","image"=>true];
 			# END COLUMNS DO NOT REMOVE THIS LINE
 
 			# START FORM DO NOT REMOVE THIS LINE
 			$this->form = [];
-			$this->form[] = ['label'=>'Judul','name'=>'judul','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10'];
-			$this->form[] = ['label'=>'File','name'=>'file','type'=>'upload','validation'=>'required','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Judul','name'=>'judul','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10','placeholder'=>'Anda hanya dapat memasukkan huruf saja'];
+			$this->form[] = ['label'=>'File','name'=>'file','type'=>'upload','validation'=>'required|required','width'=>'col-sm-10'];
+			$this->form[] = ['label'=>'Thumbnail','name'=>'thumbnail','type'=>'upload','validation'=>'required|image|max:3000','width'=>'col-sm-10','help'=>'Tipe file yang didukung: JPG, JPEG, PNG, GIF, BMP'];
 			# END FORM DO NOT REMOVE THIS LINE
 
 			# OLD START FORM
 			//$this->form = [];
-			//$this->form[] = ['label'=>'Judul','name'=>'judul','type'=>'text','validation'=>'required|string|min:3|max:70','width'=>'col-sm-10'];
-			//$this->form[] = ['label'=>'File','name'=>'file','type'=>'upload','validation'=>'required','width'=>'col-sm-10'];
+			//$this->form[] = ["label"=>"Judul","name"=>"judul","type"=>"text","required"=>TRUE,"validation"=>"required|string|min:3|max:70","placeholder"=>"Anda hanya dapat memasukkan huruf saja"];
+			//$this->form[] = ["label"=>"File","name"=>"file","type"=>"text","required"=>TRUE,"validation"=>"required|min:1|max:255"];
+			//$this->form[] = ["label"=>"Thumbnail","name"=>"thumbnail","type"=>"upload","required"=>TRUE,"validation"=>"required|image|max:3000","help"=>"Tipe file yang didukung: JPG, JPEG, PNG, GIF, BMP"];
 			# OLD END FORM
 
 			/* 
@@ -256,7 +257,7 @@
 	    public function hook_before_add(&$postdata) {        
 	        //Your code here
 
-		}
+	    }
 
 	    /* 
 	    | ---------------------------------------------------------------------- 
@@ -267,10 +268,6 @@
 	    */
 	    public function hook_after_add($id) {        
 	        //Your code here
-			// $file=DB::table('mou')->find($id);
-			// print_r(storage_path('app/'.$file->file));
-			// Image::make(storage_path('app/'.$file->file))->resize(320, 240)->save(storage_path('app\uploads\1\2019-12\x.jpg'));
-			// exit();
 
 	    }
 

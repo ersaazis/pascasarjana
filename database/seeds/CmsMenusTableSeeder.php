@@ -177,6 +177,22 @@ class CmsMenusTableSeeder extends Seeder
                 'created_at' => '2019-12-26 18:39:43',
                 'updated_at' => '2020-01-01 16:16:05',
             ),
+            10 => 
+            array (
+                'id' => 12,
+                'name' => 'Akreditasi',
+                'type' => 'Route',
+                'path' => 'AdminAkreditasiControllerGetIndex',
+                'color' => NULL,
+                'icon' => 'fa fa-file-text',
+                'parent_id' => 0,
+                'is_active' => 1,
+                'is_dashboard' => 0,
+                'id_cms_privileges' => 1,
+                'sorting' => 9,
+                'created_at' => '2020-02-05 07:31:30',
+                'updated_at' => NULL,
+            ),
         ));
         
         

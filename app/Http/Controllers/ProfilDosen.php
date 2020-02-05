@@ -48,12 +48,22 @@ class ProfilDosen extends Controller
         }
         else return redirect('/');
     }
-    public function mou(Request $request){
+    public function kerjasama(Request $request){
         $data=$request->all();
         $nama=$data['Cari'];
         $data=DB::table('mou')->where('judul','LIKE','%'.$nama.'%')->paginate(15);
         // print_r($data);
-        return view('frontend.mou')
+        return view('frontend.kerjasama')
+            ->with('i',0)
+            ->with('nama',$nama)
+            ->with('data',$data);
+    }
+    public function akreditasi(Request $request){
+        $data=$request->all();
+        $nama=$data['Cari'];
+        $data=DB::table('akreditasi')->where('judul','LIKE','%'.$nama.'%')->paginate(15);
+        // print_r($data);
+        return view('frontend.akreditasi')
             ->with('i',0)
             ->with('nama',$nama)
             ->with('data',$data);

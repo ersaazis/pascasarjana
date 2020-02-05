@@ -16,7 +16,7 @@
     </section>    
     <section class="mt-5 bg-white" id="CariDosen">
         <div class="container">
-            <form action="{{url('/mou/')}}" method="GET">
+            <form action="{{url('/kerjasama/')}}" method="GET">
             @csrf
             <div class="input-group">
                 <input type="text" placeholder="Judul Kerjasama" value="{{$nama}}" class="form-control" name="Cari">
